@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Спорт Бар — Меню</title>
+<style>
+:root{
+  --bg:#070907;
+  --card:#0d100d;
+  --line:#252b25;
+  --lime:#a8e61f;
+  --text:#f4f4f2;
+  --muted:#a9ada7;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(168,230,31,.10), transparent 28%),
+    linear-gradient(#050605,#0a0c09);
+  color:var(--text);
+}
+.app{max-width:760px;margin:0 auto;min-height:100vh;padding-bottom:90px}
+.hero{
+  padding:28px 18px 20px;
+  text-align:center;
+  border-bottom:1px solid var(--line);
+}
+.logo-main{
+  font-size:56px;
+  line-height:.9;
+  font-weight:900;
+  letter-spacing:-2px;
+  text-transform:uppercase;
+}
+.logo-main span{display:block;color:var(--lime);font-style:italic;font-size:52px}
+.tagline{
+  margin-top:14px;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.6px;
+  color:#e8e8e4;
+}
+.quick{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  padding:16px;
+}
+.quick a{
+  min-height:112px;
+  border:1px solid rgba(168,230,31,.65);
+  border-radius:18px;
+  text-decoration:none;
+  color:white;
+  background:linear-gradient(180deg,#0d110d,#090b09);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-weight:900;
+  font-size:18px;
+}
+.quick .ico{font-size:30px;color:var(--lime)}
+.nav{
+  position:sticky;top:0;z-index:20;
+  display:flex;gap:8px;overflow-x:auto;
+  padding:10px 12px;
+  background:rgba(5,6,5,.94);
+  backdrop-filter:blur(12px);
+  border-top:1px solid #171b17;
+  border-bottom:1px solid #171b17;
+}
+.nav::-webkit-scrollbar{display:none}
+.nav button{
+  border:1px solid #2a302a;
+  background:#101310;
+  color:#ddd;
+  padding:10px 13px;
+  border-radius:999px;
+  white-space:nowrap;
+  font-size:13px;
+}
+.nav button.active{border-color:var(--lime);color:var(--lime)}
+section{padding:18px 16px 6px;scroll-margin-top:64px}
+h2{
+  margin:0 0 12px;
+  font-size:29px;
+  text-transform:uppercase;
+  letter-spacing:.3px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+h2::after{content:"";height:3px;flex:1;background:linear-gradient(90deg,var(--lime),transparent)}
+.sub{color:var(--muted);font-size:13px;margin:-4px 0 12px}
+.menu-list{
+  background:rgba(13,16,13,.88);
+  border:1px solid #1f251f;
+  border-radius:18px;
+  overflow:hidden;
+}
+.item{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:12px;
+  padding:13px 14px;
+  border-bottom:1px solid #232823;
+}
+.item:last-child{border-bottom:none}
+.name{font-size:15px;line-height:1.3}
+.meta{font-size:12px;color:var(--muted);margin-top:4px}
+.price{font-weight:900;color:white;white-space:nowrap;text-align:right}
+.price small{display:block;color:var(--muted);font-weight:400;margin-bottom:3px}
+.features{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+  padding:16px;
+}
+.feature{
+  background:#0d100d;border:1px solid #242a24;border-radius:14px;
+  padding:14px 8px;text-align:center;font-size:12px;font-weight:700;
+}
+.feature b{display:block;color:var(--lime);font-size:22px;margin-bottom:7px}
+.footer{
+  text-align:center;padding:28px 16px 8px;color:#c8ccc6;
+}
+.footer strong{color:var(--lime)}
+.notice{
+  margin:8px 16px 0;
+  padding:12px 14px;
+  border:1px solid #303630;
+  border-radius:14px;
+  color:#adb2aa;
+  font-size:12px;
+  line-height:1.45;
+}
+@media(min-width:700px){
+  .quick{grid-template-columns:repeat(4,1fr)}
+  .features{grid-template-columns:repeat(6,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="hero">
+    <div class="logo-main">СПОРТ<span>БАР</span></div>
+    <div class="tagline">★ ТВОЙ БАР. ТВОИ ПРАВИЛА. ТВОЯ ПОБЕДА! ★</div>
+  </header>
+
+  <div class="quick">
+    <a href="#zakuski"><div class="ico">🍴</div>КУХНЯ</a>
+    <a href="#cocktails"><div class="ico">🍸</div>БАР</a>
+    <a href="#lemonade"><div class="ico">🥤</div>НАПИТКИ</a>
+    <a href="#beer"><div class="ico">🍺</div>ПИВО</a>
+  </div>
+
+  <div class="features">
+    <div class="feature"><b>▣</b>Прямые трансляции</div>
+    <div class="feature"><b>◉</b>Русский бильярд</div>
+    <div class="feature"><b>🎮</b>Игровая зона PS5</div>
+    <div class="feature"><b>♨</b>Кальянная зона</div>
+    <div class="feature"><b>🥂</b>Приятная атмосфера</div>
+    <div class="feature"><b>♡</b>Отдых для души</div>
+  </div>
+
+  <nav class="nav" id="nav">
+    <button data-to="zakuski" class="active">Закуски</button>
+    <button data-to="hot">Горячее</button>
+    <button data-to="fryer">Фритюр</button>
+    <button data-to="salads">Салаты</button>
+    <button data-to="soups">Супы</button>
+    <button data-to="desserts">Десерты</button>
+    <button data-to="cocktails">Коктейли</button>
+    <button data-to="strong">Крепкое</button>
+    <button data-to="lemonade">Напитки</button>
+    <button data-to="beer">Пиво</button>
+    <button data-to="hookah">Кальян</button>
+  </nav>
+
+  <section id="zakuski">
+    <h2>Закуски</h2>
+    <div class="menu-list">
+      <div class="item"><div><div class="name">Сельдь по домашнему</div></div><div class="price"><small>415 г</small>650 ₽</div></div>
+      <div class="item"><div><div class="name">Ассорти свежих овощей</div></div><div class="price"><small>485 г</small>900 ₽</div></div>
+      <div class="item"><div><div class="name">Ассорти домашних солений</div></div><div class="price"><small>390 г</small>750 ₽</div></div>
+      <div class="item"><div><div class="name">Ассорти мясное</div></div><div class="price"><small>260 г</small>950 ₽</div></div>
+      <div class="item"><div><div class="name">Ассорти сырное</div></div><div class="price"><small>260 г</small>950 ₽</div></div>
+      <div class="item"><div><div class="name">Рыбная нарезка</div></div><div class="price"><small>350 г</small>1500 ₽</div></div>
+      <div class="item"><div><div class="name">Креветки магаданские</div></div><div class="price"><small>620 г</small>2600 ₽</div></div>
+      <div class="item"><div><div class="name">Мидии в ракушках</div></div><div class="price"><small>350 г</small>850 ₽</div></div>
+    </div>
+  </section>
+
+  <section id="hot">
+    <h2>Горячее</h2>
+    <div class="menu-list">
+      <div class="item"><div class="name">Стейк из свинины</div><div class="price"><small>580 г</small>950 ₽</div></div>
+      <div class="item"><div class="name">Стейк из куриного бедра</div><div class="price"><small>580 г</small>740 ₽</div></div>
+      <div class="item"><div class="name">Крылья BBQ</div><div class="price"><small>680 г</small>990 ₽</div></div>
+      <div class="item"><div class="name">Ассорти колбасок на гриле</div><div class="price"><small>940 г</small>2500 ₽</div></div>
+      <div class="item"><div class="name">Жареный картофель с грибами</div><div class="price"><small>320 г</small>650 ₽</div></div>
+      <div class="item"><div class="name">Овощи гриль</div><div class="price"><small>370 г</small>700 ₽</div></div>
+      <div class="item"><div class="name">Лапша соба с курицей</div><div class="price"><small>470 г</small>780 ₽</div></div>
+      <div class="item"><div class="name">Бургер с картофелем фри</div><div class="price"><small>470 г</small>650 ₽</div></div>
+      <div class="item"><div class="name">Хот дог</div><div class="price"><small>350 г</small>550 ₽</div></div>
+      <div class="item"><div class="name">Сендвич</div><div class="price"><small>350 г</small>650 ₽</div></div>
+      <div class="item"><div class="name">Стейк Рибай</div><div class="price"><small>470 г</small>3000 ₽</div></div>
+      <div class="item"><div class="name">Говядина терияки с картофелем</div><div class="price"><small>380 г</small>790 ₽</div></div>
+    </div>
+  </section>
+
+  <section id="fryer">
+    <h2>Фритюр</h2>
+    <div class="menu-list">
+      <div class="item"><div class="name">Пивная тарелка</div><div class="price"><small>860 г</small>1600 ₽</div></div>
+      <div class="item"><div class="name">Картофель фри</div><div class="price"><small>150 г</small>250 ₽</div></div>
+      <div class="item"><div class="name">Картофель дольками</div><div class="price"><small>150 г</small>270 ₽</div></div>
+      <div class="item"><div class="name">Гренки</div><div class="price"><small>150 г</small>250 ₽</div></div>
+      <div class="item"><div class="name">Луковые кольца</div><div class="price"><small>150 г</small>250 ₽</div></div>
+      <div class="item"><div class="name">Дамплинги с морепродуктами</div><div class="price"><small>150 г</small>600 ₽</div></div>
+      <div class="item"><div class="name">Сырные палочки</div><div class="price"><small>150 г</small>400 ₽</div></div>
+      <div class="item"><div class="name">Наггетсы</div><div class="price"><small>200 г</small>420 ₽</div></div>
+    </div>
+  </section>
+
+  <section id="salads">
+    <h2>Салаты</h2>
+    <div class="menu-list">
+      <div class="item"><div class="name">Греческий</div><div class="price"><small>215 г</small>620 ₽</div></div>
+      <div class="item"><div class="name">Салат с говядиной</div><div class="price"><small>230 г</small>750 ₽</div></div>
+      <div class="item"><div class="name">Салат с морепродуктами</div><div class="price"><small>260 г</small>850 ₽</div></div>
+      <div class="item"><div class="name">Чили салат с колбасками</div><div class="price"><small>260 г</small>780 ₽</div></div>
+      <div class="item"><div class="name">Салат с лососем</div><div class="price"><small>370 г</small>690 ₽</div></div>
+      <div class="item"><div class="name">Цезарь с курицей</div><div class="price"><small>250 г</small>700 ₽</div></div>
+      <div class="item"><div class="name">Цезарь с креветкой</div><div class="price"><small>250 г</small>870 ₽</div></div>
+      <div class="item"><div class="name">Табули</div><div class="price"><small>250 г</small>680 ₽</div></div>
+    </div>
+  </section>
+
+  <section id="soups">
+    <h2>Супы</h2>
+    <div class="menu-list">
+      <div class="item"><div class="name">Том Ям</div><div class="price"><small>655 г</small>950 ₽</div></div>
+      <div class="item"><div class="name">Борщ</div><div class="price"><small>480 г</small>650 ₽</div></div>
+    </div>
+  </section>
+
+  <section id="desserts">
+    <h2>Десерты</h2>
+    <div class="menu-list">
+      <div class="item"><div class="name">Сырники со сгущенкой</div><div class="price"><small>210 г</small>350 ₽</div></div>
+      <div class="item"><div class="name">Блинчики со сметаной</div><div class="price"><small>130 г</small>300 ₽</div></div>
+    </div>
+  </section>
+
+  <section id="cocktails">
+    <h2>Коктейли</h2>
+    <div class="menu-list">
+      <div class="item"><div class="name">Апероль шприц</div><div class="price"><small>300 мл</small>650 ₽</div></div>
+      <div class="item"><div class="name">Негрони</div><div class="price"><small>100 мл</small>700 ₽</div></div>
+      <div class="item"><div class="name">Голубая лагуна</div><div class="price"><small>200 мл</small>550 ₽</div></div>
+      <div class="item"><div class="name">Джин и грек</div><div class="price"><small>100 мл</small>550 ₽</div></div>
+      <div class="item"><div class="name">Джон Коллинз</div><div class="price"><small>200 мл</small>550 ₽</div></div>
+      <div class="item"><div class="name">Куба Либре</div><div class="price"><small>200 мл</small>550 ₽</div></div>
+      <div class="item"><div class="name">Мохито</div><div class="price"><small>250 мл</small>500 ₽</div></div>
+      <div class="item"><div class="name">Маргарита</div><div class="price"><small>100 мл</small>550 ₽</div></div>
+      <div class="item"><div class="name">Мартини</div><div class="price"><small>90 мл</small>550 ₽</div></div>
+      <div class="item"><div class="name">Лонг Айленд</div><div class="price"><small>200 мл</small>850 ₽</div></div>
+      <div class="item"><div class="name">Пина Колада</div><div class="price"><small>200 мл</small>600 ₽</div></div>
+      <div class="item"><div class="name">Текила Бум</div><div class="price"><small>50 мл</small>450 ₽</div></div>
+      <div class="item"><div class="name">Текила Санрайз</div><div class="price"><small>200 мл</small>550 ₽</div></div>
+      <div class="item"><div class="name">Виски — кола</div><div class="price"><small>200 мл</small>550 ₽</div></div>
+      <div class="item"><div class="name">Джин — спрайт</div><div class="price"><small>200 мл</small>550 ₽</div></div>
+      <div class="item"><div class="name">Егерь — сок</div><div class="price"><small>200 мл</small>600 ₽</div></div>
+      <div class="item"><div class="name">Флирт</div><div class="price"><small>200 мл</small>550 ₽</div></div>
+      <div class="item"><div class="name">Мятный боллит</div><div class="price"><small>200 мл</small>550 ₽</div></div>
+      <div class="item"><div class="name">Нежный поцелуй в шею</div><div class="price"><small>200 мл</small>550 ₽</div></div>
+      <div class="item"><div class="name">Дюшес для взрослых</div><div class="price"><small>200 мл</small>550 ₽</div></div>
+    </div>
+  </section>
+
+  <section id="strong">
+    <h2>Крепкое</h2>
+    <p class="sub">Водка · настойки · джин · ликер · текила · ром · виски · коньяк · вино</p>
+    <div class="menu-list">
+      <div class="item"><div class="name">Водка Белуга</div><div class="price"><small>50 мл</small>450 ₽</div></div>
+      <div class="item"><div class="name">Водка Онегин</div><div class="price"><small>50 мл</small>400 ₽</div></div>
+      <div class="item"><div class="name">Водка Grey Goose</div><div class="price"><small>50 мл</small>700 ₽</div></div>
+      <div class="item"><div class="name">Водка Царская</div><div class="price"><small>50 мл</small>250 ₽</div></div>
+      <div class="item"><div class="name">Водка Чистые росы</div><div class="price"><small>50 мл</small>550 ₽</div></div>
+      <div class="item"><div class="name">Водка Алтай</div><div class="price"><small>50 мл</small>250 ₽</div></div>
+      <div class="item"><div class="name">Настойки — брусничная / малиновая / облепиховая / сливочная / смородиновая / витамин C / мятная / дюшес / жгучий апельсин</div><div class="price"><small>50 мл</small>200 ₽</div></div>
+      <div class="item"><div class="name">Джин Барристер</div><div class="price"><small>50 мл</small>250 ₽</div></div>
+      <div class="item"><div class="name">Ликер Егермейстер</div><div class="price"><small>50 мл</small>450 ₽</div></div>
+      <div class="item"><div class="name">Текила Лос Корралес</div><div class="price"><small>50 мл</small>350 ₽</div></div>
+      <div class="item"><div class="name">Ром Рон Каладос</div><div class="price"><small>50 мл</small>300 ₽</div></div>
+      <div class="item"><div class="name">Jack Daniel's</div><div class="price"><small>50 мл</small>700 ₽</div></div>
+      <div class="item"><div class="name">Jack Daniel's Honey</div><div class="price"><small>50 мл</small>740 ₽</div></div>
+      <div class="item"><div class="name">Nucky Thompson</div><div class="price"><small>50 мл</small>300 ₽</div></div>
+      <div class="item"><div class="name">Chivas Regal</div><div class="price"><small>50 мл</small>950 ₽</div></div>
+      <div class="item"><div class="name">Jameson</div><div class="price"><small>50 мл</small>680 ₽</div></div>
+      <div class="item"><div class="name">Jim Beam</div><div class="price"><small>50 мл</small>550 ₽</div></div>
+      <div class="item"><div class="name">Коньяк Арарат</div><div class="price"><small>50 мл</small>450 ₽</div></div>
+      <div class="item"><div class="name">Коньяк Асканели</div><div class="price"><small>50 мл</small>350 ₽</div></div>
+      <div class="item"><div class="name">Коньяк Старый Кенигсберг</div><div class="price"><small>50 мл</small>250 ₽</div></div>
+      <div class="item"><div class="name">Вино Алазанская долина</div><div class="price"><small>150 мл</small>500 ₽</div></div>
+      <div class="item"><div class="name">Вино Киндзмараули</div><div class="price"><small>150 мл</small>500 ₽</div></div>
+      <div class="item"><div class="name">Вино Абрау-Дюрсо / п/сл / брют</div><div class="price"><small>150 мл</small>400 ₽</div></div>
+      <div class="item"><div class="name">Мартини Просекко</div><div class="price"><small>750 мл</small>1200 ₽</div></div>
+    </div>
+  </section>
+
+  <section id="lemonade">
+    <h2>Напитки</h2>
+    <div class="menu-list">
+      <div class="item"><div class="name">Лимонад — клюква</div><div class="price"><small>300 мл / 1000 мл</small>300 / 800 ₽</div></div>
+      <div class="item"><div class="name">Лимонад — облепиха</div><div class="price"><small>300 мл / 1000 мл</small>300 / 800 ₽</div></div>
+      <div class="item"><div class="name">Лимонад — малина-имбирь</div><div class="price"><small>300 мл / 1000 мл</small>300 / 800 ₽</div></div>
+      <div class="item"><div class="name">Лимонад — манго-лимон</div><div class="price"><small>300 мл / 1000 мл</small>300 / 800 ₽</div></div>
+      <div class="item"><div class="name">Лимонад — смородина</div><div class="price"><small>300 мл / 1000 мл</small>300 / 800 ₽</div></div>
+      <div class="item"><div class="name">Морс</div><div class="price"><small>200 мл / 1000 мл</small>150 / 550 ₽</div></div>
+      <div class="item"><div class="name">Чай классический</div><div class="price"><small>900 мл</small>500 ₽</div></div>
+      <div class="item"><div class="name">Чай авторский</div><div class="price"><small>900 мл</small>650 ₽</div></div>
+      <div class="item"><div class="name">Американо</div><div class="price"><small>150 мл</small>220 ₽</div></div>
+      <div class="item"><div class="name">Капучино</div><div class="price"><small>200 мл</small>300 ₽</div></div>
+      <div class="item"><div class="name">Латте</div><div class="price"><small>300 мл</small>300 ₽</div></div>
+      <div class="item"><div class="name">Эспрессо</div><div class="price"><small>45 мл</small>200 ₽</div></div>
+      <div class="item"><div class="name">Армянский кофе</div><div class="price"><small>45 мл</small>200 ₽</div></div>
+    </div>
+  </section>
+
+  <section id="beer">
+    <h2>Пиво</h2>
+    <div class="menu-list">
+      <div class="item"><div class="name">Пиво на розлив</div><div class="price">от 350 ₽</div></div>
+      <div class="item"><div class="name">Пиво в бутылках</div><div class="price">от 300 ₽</div></div>
+    </div>
+  </section>
+
+  <section id="hookah">
+    <h2>Кальян</h2>
+    <div class="menu-list">
+      <div class="item"><div><div class="name">Кальян</div></div><div class="price">1800 ₽</div></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <strong>СМОТРИ. БОЛЕЙ. ПОБЕЖДАЙ!</strong><br><br>
+    Спорт Бар
+  </footer>
+</div>
+
+<script>
+const buttons=[...document.querySelectorAll('.nav button')];
+buttons.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.getElementById(btn.dataset.to).scrollIntoView({behavior:'smooth'});
+  });
+});
+const ids=buttons.map(b=>b.dataset.to);
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      buttons.forEach(b=>b.classList.toggle('active', b.dataset.to===e.target.id));
+    }
+  });
+},{rootMargin:'-90px 0px -65% 0px',threshold:0});
+ids.forEach(id=>observer.observe(document.getElementById(id)));
+</script>
+</body>
+</html>
