@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Спорт Бар — Меню</title>
+<title>Спорт Бар - Меню</title>
 <style>
 :root{
   --bg:#070907;
@@ -76,7 +76,7 @@ body{
   border-bottom:1px solid #171b17;
 }
 .nav::-webkit-scrollbar{display:none}
-.nav button{
+.nav a{
   border:1px solid #2a302a;
   background:#101310;
   color:#ddd;
@@ -84,9 +84,11 @@ body{
   border-radius:999px;
   white-space:nowrap;
   font-size:13px;
+  text-decoration:none;
+  display:block;
 }
-.nav button.active{border-color:var(--lime);color:var(--lime)}
-section{padding:18px 16px 6px;scroll-margin-top:64px}
+.nav a.active{border-color:var(--lime);color:var(--lime)}
+section{padding:18px 16px 6px;scroll-margin-top:76px}
 h2{
   margin:0 0 12px;
   font-size:29px;
@@ -142,6 +144,18 @@ h2::after{content:"";height:3px;flex:1;background:linear-gradient(90deg,var(--li
   .quick{grid-template-columns:repeat(4,1fr)}
   .features{grid-template-columns:repeat(6,1fr)}
 }
+
+.drink-group{
+  margin:20px 2px 8px;
+  color:var(--lime);
+  font-size:17px;
+  text-transform:uppercase;
+  letter-spacing:.8px;
+}
+.drink-group:first-of-type{margin-top:4px}
+#strong .menu-list{margin-bottom:8px}
+
+
 </style>
 </head>
 <body>
@@ -168,17 +182,17 @@ h2::after{content:"";height:3px;flex:1;background:linear-gradient(90deg,var(--li
   </div>
 
   <nav class="nav" id="nav">
-    <button data-to="zakuski" class="active">Закуски</button>
-    <button data-to="hot">Горячее</button>
-    <button data-to="fryer">Фритюр</button>
-    <button data-to="salads">Салаты</button>
-    <button data-to="soups">Супы</button>
-    <button data-to="desserts">Десерты</button>
-    <button data-to="cocktails">Коктейли</button>
-    <button data-to="strong">Крепкое</button>
-    <button data-to="lemonade">Напитки</button>
-    <button data-to="beer">Пиво</button>
-    <button data-to="hookah">Кальян</button>
+    <a href="#zakuski" data-to="zakuski" class="active">Закуски</a>
+    <a href="#hot" data-to="hot">Горячее</a>
+    <a href="#fryer" data-to="fryer">Фритюр</a>
+    <a href="#salads" data-to="salads">Салаты</a>
+    <a href="#soups" data-to="soups">Супы</a>
+    <a href="#desserts" data-to="desserts">Десерты</a>
+    <a href="#cocktails" data-to="cocktails">Коктейли</a>
+    <a href="#strong" data-to="strong">Крепкое</a>
+    <a href="#lemonade" data-to="lemonade">Напитки</a>
+    <a href="#beer" data-to="beer">Пиво</a>
+    <a href="#hookah" data-to="hookah">Кальян</a>
   </nav>
 
   <section id="zakuski">
@@ -263,7 +277,7 @@ h2::after{content:"";height:3px;flex:1;background:linear-gradient(90deg,var(--li
       <div class="item"><div class="name">Апероль шприц</div><div class="price"><small>300 мл</small>650 ₽</div></div>
       <div class="item"><div class="name">Негрони</div><div class="price"><small>100 мл</small>700 ₽</div></div>
       <div class="item"><div class="name">Голубая лагуна</div><div class="price"><small>200 мл</small>550 ₽</div></div>
-      <div class="item"><div class="name">Джин и грек</div><div class="price"><small>100 мл</small>550 ₽</div></div>
+      <div class="item"><div class="name">Джин и грех</div><div class="price"><small>100 мл</small>550 ₽</div></div>
       <div class="item"><div class="name">Джон Коллинз</div><div class="price"><small>200 мл</small>550 ₽</div></div>
       <div class="item"><div class="name">Куба Либре</div><div class="price"><small>200 мл</small>550 ₽</div></div>
       <div class="item"><div class="name">Мохито</div><div class="price"><small>250 мл</small>500 ₽</div></div>
@@ -273,9 +287,9 @@ h2::after{content:"";height:3px;flex:1;background:linear-gradient(90deg,var(--li
       <div class="item"><div class="name">Пина Колада</div><div class="price"><small>200 мл</small>600 ₽</div></div>
       <div class="item"><div class="name">Текила Бум</div><div class="price"><small>50 мл</small>450 ₽</div></div>
       <div class="item"><div class="name">Текила Санрайз</div><div class="price"><small>200 мл</small>550 ₽</div></div>
-      <div class="item"><div class="name">Виски — кола</div><div class="price"><small>200 мл</small>550 ₽</div></div>
-      <div class="item"><div class="name">Джин — спрайт</div><div class="price"><small>200 мл</small>550 ₽</div></div>
-      <div class="item"><div class="name">Егерь — сок</div><div class="price"><small>200 мл</small>600 ₽</div></div>
+      <div class="item"><div class="name">Виски - кола</div><div class="price"><small>200 мл</small>550 ₽</div></div>
+      <div class="item"><div class="name">Джин - спрайт</div><div class="price"><small>200 мл</small>550 ₽</div></div>
+      <div class="item"><div class="name">Егерь - сок</div><div class="price"><small>200 мл</small>600 ₽</div></div>
       <div class="item"><div class="name">Флирт</div><div class="price"><small>200 мл</small>550 ₽</div></div>
       <div class="item"><div class="name">Мятный боллит</div><div class="price"><small>200 мл</small>550 ₽</div></div>
       <div class="item"><div class="name">Нежный поцелуй в шею</div><div class="price"><small>200 мл</small>550 ₽</div></div>
@@ -285,46 +299,77 @@ h2::after{content:"";height:3px;flex:1;background:linear-gradient(90deg,var(--li
 
   <section id="strong">
     <h2>Крепкое</h2>
-    <p class="sub">Водка · настойки · джин · ликер · текила · ром · виски · коньяк · вино</p>
+    <h3 class="drink-group">Водка</h3>
     <div class="menu-list">
-      <div class="item"><div class="name">Водка Белуга</div><div class="price"><small>50 мл</small>450 ₽</div></div>
-      <div class="item"><div class="name">Водка Онегин</div><div class="price"><small>50 мл</small>400 ₽</div></div>
-      <div class="item"><div class="name">Водка Grey Goose</div><div class="price"><small>50 мл</small>700 ₽</div></div>
-      <div class="item"><div class="name">Водка Царская</div><div class="price"><small>50 мл</small>250 ₽</div></div>
-      <div class="item"><div class="name">Водка Чистые росы</div><div class="price"><small>50 мл</small>550 ₽</div></div>
-      <div class="item"><div class="name">Водка Алтай</div><div class="price"><small>50 мл</small>250 ₽</div></div>
-      <div class="item"><div class="name">Настойки — брусничная / малиновая / облепиховая / сливочная / смородиновая / витамин C / мятная / дюшес / жгучий апельсин</div><div class="price"><small>50 мл</small>200 ₽</div></div>
-      <div class="item"><div class="name">Джин Барристер</div><div class="price"><small>50 мл</small>250 ₽</div></div>
-      <div class="item"><div class="name">Ликер Егермейстер</div><div class="price"><small>50 мл</small>450 ₽</div></div>
-      <div class="item"><div class="name">Текила Лос Корралес</div><div class="price"><small>50 мл</small>350 ₽</div></div>
-      <div class="item"><div class="name">Ром Рон Каладос</div><div class="price"><small>50 мл</small>300 ₽</div></div>
-      <div class="item"><div class="name">Jack Daniel's</div><div class="price"><small>50 мл</small>700 ₽</div></div>
-      <div class="item"><div class="name">Jack Daniel's Honey</div><div class="price"><small>50 мл</small>740 ₽</div></div>
-      <div class="item"><div class="name">Nucky Thompson</div><div class="price"><small>50 мл</small>300 ₽</div></div>
-      <div class="item"><div class="name">Chivas Regal</div><div class="price"><small>50 мл</small>950 ₽</div></div>
-      <div class="item"><div class="name">Jameson</div><div class="price"><small>50 мл</small>680 ₽</div></div>
-      <div class="item"><div class="name">Jim Beam</div><div class="price"><small>50 мл</small>550 ₽</div></div>
-      <div class="item"><div class="name">Коньяк Арарат</div><div class="price"><small>50 мл</small>450 ₽</div></div>
-      <div class="item"><div class="name">Коньяк Асканели</div><div class="price"><small>50 мл</small>350 ₽</div></div>
-      <div class="item"><div class="name">Коньяк Старый Кенигсберг</div><div class="price"><small>50 мл</small>250 ₽</div></div>
-      <div class="item"><div class="name">Вино Алазанская долина</div><div class="price"><small>150 мл</small>500 ₽</div></div>
-      <div class="item"><div class="name">Вино Киндзмараули</div><div class="price"><small>150 мл</small>500 ₽</div></div>
-      <div class="item"><div class="name">Вино Абрау-Дюрсо / п/сл / брют</div><div class="price"><small>150 мл</small>400 ₽</div></div>
+      <div class="item"><div class="name">Белуга</div><div class="price"><small>50 мл</small>450 ₽</div></div>
+      <div class="item"><div class="name">Онегин</div><div class="price"><small>50 мл</small>400 ₽</div></div>
+      <div class="item"><div class="name">Грей Гус</div><div class="price"><small>50 мл</small>700 ₽</div></div>
+      <div class="item"><div class="name">Царская</div><div class="price"><small>50 мл</small>250 ₽</div></div>
+      <div class="item"><div class="name">Чистые росы</div><div class="price"><small>50 мл</small>550 ₽</div></div>
+      <div class="item"><div class="name">Алтай</div><div class="price"><small>50 мл</small>250 ₽</div></div>
+    </div>
+    <h3 class="drink-group">Настойки</h3>
+    <div class="menu-list">
+      <div class="item"><div class="name">Брусничная / малиновая / облепиховая / сливочная / смородиновая / витамин С / мятная / дюшес / жгучий апельсин</div><div class="price"><small>50 мл</small>200 ₽</div></div>
+    </div>
+    <h3 class="drink-group">Джин</h3>
+    <div class="menu-list">
+      <div class="item"><div class="name">Барристер</div><div class="price"><small>50 мл</small>250 ₽</div></div>
+    </div>
+    <h3 class="drink-group">Ликер</h3>
+    <div class="menu-list">
+      <div class="item"><div class="name">Егермейстер</div><div class="price"><small>50 мл</small>450 ₽</div></div>
+    </div>
+    <h3 class="drink-group">Текила</h3>
+    <div class="menu-list">
+      <div class="item"><div class="name">Лос Корралес</div><div class="price"><small>50 мл</small>350 ₽</div></div>
+    </div>
+    <h3 class="drink-group">Ром</h3>
+    <div class="menu-list">
+      <div class="item"><div class="name">Рон Каладос</div><div class="price"><small>50 мл</small>300 ₽</div></div>
+    </div>
+    <h3 class="drink-group">Виски</h3>
+    <div class="menu-list">
+      <div class="item"><div class="name">Джек Дэниэлс</div><div class="price"><small>50 мл</small>700 ₽</div></div>
+      <div class="item"><div class="name">Джек Дэниэлс Хани</div><div class="price"><small>50 мл</small>740 ₽</div></div>
+      <div class="item"><div class="name">Наки Томпсон</div><div class="price"><small>50 мл</small>300 ₽</div></div>
+      <div class="item"><div class="name">Чивас</div><div class="price"><small>50 мл</small>950 ₽</div></div>
+      <div class="item"><div class="name">Джемесон</div><div class="price"><small>50 мл</small>680 ₽</div></div>
+      <div class="item"><div class="name">Джим Бим</div><div class="price"><small>50 мл</small>550 ₽</div></div>
+    </div>
+    <h3 class="drink-group">Коньяк</h3>
+    <div class="menu-list">
+      <div class="item"><div class="name">Арарат</div><div class="price"><small>50 мл</small>450 ₽</div></div>
+      <div class="item"><div class="name">Асканели</div><div class="price"><small>50 мл</small>350 ₽</div></div>
+      <div class="item"><div class="name">Старый Кенигсберг</div><div class="price"><small>50 мл</small>250 ₽</div></div>
+    </div>
+    <h3 class="drink-group">Вино</h3>
+    <div class="menu-list">
+      <div class="item"><div class="name">Алазанская долина</div><div class="price"><small>150 мл</small>500 ₽</div></div>
+      <div class="item"><div class="name">Киндзмараули</div><div class="price"><small>150 мл</small>500 ₽</div></div>
+      <div class="item"><div class="name">Абрау-Дюрсо / п/сл / брют</div><div class="price"><small>150 мл</small>400 ₽</div></div>
       <div class="item"><div class="name">Мартини Просекко</div><div class="price"><small>750 мл</small>1200 ₽</div></div>
     </div>
   </section>
 
   <section id="lemonade">
     <h2>Напитки</h2>
+    <h3 class="drink-group">Холодные</h3>
     <div class="menu-list">
-      <div class="item"><div class="name">Лимонад — клюква</div><div class="price"><small>300 мл / 1000 мл</small>300 / 800 ₽</div></div>
-      <div class="item"><div class="name">Лимонад — облепиха</div><div class="price"><small>300 мл / 1000 мл</small>300 / 800 ₽</div></div>
-      <div class="item"><div class="name">Лимонад — малина-имбирь</div><div class="price"><small>300 мл / 1000 мл</small>300 / 800 ₽</div></div>
-      <div class="item"><div class="name">Лимонад — манго-лимон</div><div class="price"><small>300 мл / 1000 мл</small>300 / 800 ₽</div></div>
-      <div class="item"><div class="name">Лимонад — смородина</div><div class="price"><small>300 мл / 1000 мл</small>300 / 800 ₽</div></div>
+      <div class="item"><div class="name">Лимонад - клюква</div><div class="price"><small>300 мл / 1000 мл</small>300 / 800 ₽</div></div>
+      <div class="item"><div class="name">Лимонад - облепиха</div><div class="price"><small>300 мл / 1000 мл</small>300 / 800 ₽</div></div>
+      <div class="item"><div class="name">Лимонад - малина-имбирь</div><div class="price"><small>300 мл / 1000 мл</small>300 / 800 ₽</div></div>
+      <div class="item"><div class="name">Лимонад - манго-лимон</div><div class="price"><small>300 мл / 1000 мл</small>300 / 800 ₽</div></div>
+      <div class="item"><div class="name">Лимонад - смородина</div><div class="price"><small>300 мл / 1000 мл</small>300 / 800 ₽</div></div>
       <div class="item"><div class="name">Морс</div><div class="price"><small>200 мл / 1000 мл</small>150 / 550 ₽</div></div>
+    </div>
+    <h3 class="drink-group">Чай</h3>
+    <div class="menu-list">
       <div class="item"><div class="name">Чай классический</div><div class="price"><small>900 мл</small>500 ₽</div></div>
       <div class="item"><div class="name">Чай авторский</div><div class="price"><small>900 мл</small>650 ₽</div></div>
+    </div>
+    <h3 class="drink-group">Кофе</h3>
+    <div class="menu-list">
       <div class="item"><div class="name">Американо</div><div class="price"><small>150 мл</small>220 ₽</div></div>
       <div class="item"><div class="name">Капучино</div><div class="price"><small>200 мл</small>300 ₽</div></div>
       <div class="item"><div class="name">Латте</div><div class="price"><small>300 мл</small>300 ₽</div></div>
@@ -355,21 +400,60 @@ h2::after{content:"";height:3px;flex:1;background:linear-gradient(90deg,var(--li
 </div>
 
 <script>
-const buttons=[...document.querySelectorAll('.nav button')];
-buttons.forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.getElementById(btn.dataset.to).scrollIntoView({behavior:'smooth'});
-  });
-});
-const ids=buttons.map(b=>b.dataset.to);
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      buttons.forEach(b=>b.classList.toggle('active', b.dataset.to===e.target.id));
+const nav = document.getElementById('nav');
+const links = [...document.querySelectorAll('.nav a[data-to]')];
+const sections = links
+  .map(link => document.getElementById(link.dataset.to))
+  .filter(Boolean);
+
+function setActive(id, center = true) {
+  links.forEach(link => {
+    const isActive = link.dataset.to === id;
+    link.classList.toggle('active', isActive);
+    if (isActive && center) {
+      link.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
     }
   });
-},{rootMargin:'-90px 0px -65% 0px',threshold:0});
-ids.forEach(id=>observer.observe(document.getElementById(id)));
+}
+
+links.forEach(link => {
+  link.addEventListener('click', () => {
+    setActive(link.dataset.to);
+  });
+});
+
+function updateActiveFromScroll() {
+  const marker = (nav ? nav.offsetHeight : 0) + 28;
+  let current = sections[0];
+
+  for (const section of sections) {
+    if (section.getBoundingClientRect().top <= marker) {
+      current = section;
+    } else {
+      break;
+    }
+  }
+
+  if (current) setActive(current.id, false);
+}
+
+let scheduled = false;
+window.addEventListener('scroll', () => {
+  if (scheduled) return;
+  scheduled = true;
+  requestAnimationFrame(() => {
+    updateActiveFromScroll();
+    scheduled = false;
+  });
+}, {passive:true});
+
+window.addEventListener('load', () => {
+  updateActiveFromScroll();
+  if (location.hash) {
+    const id = location.hash.slice(1);
+    if (document.getElementById(id)) setActive(id);
+  }
+});
 </script>
 </body>
 </html>
