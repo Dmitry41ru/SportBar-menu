@@ -767,28 +767,6 @@ body.sidebar-open{
 }
 
 </style>
-<script src="https://maps.api.2gis.ru/2.0/loader.js">
-/* ===== 2GIS MAP ===== */
-let dgMapInitialized = false;
-function init2GISMap() {
-  if (dgMapInitialized || typeof DG === 'undefined') return;
-  DG.then(function () {
-    const mapEl = document.getElementById('dgMap');
-    if (!mapEl || dgMapInitialized) return;
-    const map = DG.map('dgMap', {
-      center: [53.070557, 158.588874],
-      zoom: 17,
-      fullscreenControl: false
-    });
-    DG.marker([53.070557, 158.588874])
-      .addTo(map)
-      .bindPopup('<strong>Спорт-бар</strong><br>проспект Победы, 67/2');
-    dgMapInitialized = true;
-    setTimeout(function () { map.invalidateSize(); }, 350);
-  });
-}
-
-</script>
 </head>
 <body>
 
@@ -813,7 +791,15 @@ function init2GISMap() {
       <h2>Мы находимся здесь</h2>
       <p class="location-address">Петропавловск-Камчатский, проспект Победы, 67/2</p>
 
-      <div class="map-wrap"><div id="dgMap" class="location-map" aria-label="Карта Спортбара"></div></div>
+      <div class="map-wrap">
+        <iframe
+          class="location-map"
+          src="https://widgets.2gis.com/widget?type=firmsonmap&options=%7B%22pos%22%3A%7B%22lat%22%3A53.070557%2C%22lon%22%3A158.588874%2C%22zoom%22%3A17%7D%2C%22opt%22%3A%7B%22city%22%3A%22p_kamchatskiy%22%7D%2C%22org%22%3A%2270000001101674671%22%7D"
+          loading="lazy"
+          allowfullscreen
+          title="2ГИС — Спорт-бар">
+        </iframe>
+      </div>
 
       <a
         class="route-button"
@@ -1373,10 +1359,7 @@ openMenuPage?.addEventListener('click', () => {
 openBonusPage?.addEventListener('click', showBonusPage);
 bonusBack?.addEventListener('click', hideBonusPage);
 
-openLocationPage?.addEventListener('click', () => {
-  showLocationPage();
-  setTimeout(init2GISMap, 350);
-});
+openLocationPage?.addEventListener('click', showLocationPage);
 locationBack?.addEventListener('click', hideLocationPage);
 
 document.addEventListener('keydown', event => {
