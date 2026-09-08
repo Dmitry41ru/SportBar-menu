@@ -767,6 +767,28 @@ body.sidebar-open{
 }
 
 </style>
+<script src="https://maps.api.2gis.ru/2.0/loader.js">
+/* ===== 2GIS MAP ===== */
+let dgMapInitialized = false;
+function init2GISMap() {
+  if (dgMapInitialized || typeof DG === 'undefined') return;
+  DG.then(function () {
+    const mapEl = document.getElementById('dgMap');
+    if (!mapEl || dgMapInitialized) return;
+    const map = DG.map('dgMap', {
+      center: [53.070557, 158.588874],
+      zoom: 17,
+      fullscreenControl: false
+    });
+    DG.marker([53.070557, 158.588874])
+      .addTo(map)
+      .bindPopup('<strong>Спорт-бар</strong><br>проспект Победы, 67/2');
+    dgMapInitialized = true;
+    setTimeout(function () { map.invalidateSize(); }, 350);
+  });
+}
+
+</script>
 </head>
 <body>
 
@@ -791,15 +813,7 @@ body.sidebar-open{
       <h2>Мы находимся здесь</h2>
       <p class="location-address">Петропавловск-Камчатский, проспект Победы, 67/2</p>
 
-      <div class="map-wrap">
-        <iframe
-          class="location-map"
-          src="https://www.openstreetmap.org/export/embed.html?bbox=158.583874%2C53.067557%2C158.593874%2C53.073557&layer=mapnik&marker=53.070557%2C158.588874"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Карта Спортбара">
-        </iframe>
-      </div>
+      <div class="map-wrap"><div id="dgMap" class="location-map" aria-label="Карта Спортбара"></div></div>
 
       <a
         class="route-button"
@@ -1359,7 +1373,10 @@ openMenuPage?.addEventListener('click', () => {
 openBonusPage?.addEventListener('click', showBonusPage);
 bonusBack?.addEventListener('click', hideBonusPage);
 
-openLocationPage?.addEventListener('click', showLocationPage);
+openLocationPage?.addEventListener('click', () => {
+  showLocationPage();
+  setTimeout(init2GISMap, 350);
+});
 locationBack?.addEventListener('click', hideLocationPage);
 
 document.addEventListener('keydown', event => {
