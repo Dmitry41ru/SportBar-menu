@@ -622,6 +622,150 @@ body.sidebar-open{
   cursor:pointer;
 }
 
+
+/* ===== LOCATION PAGE ===== */
+.location-page{
+  position:fixed;
+  inset:0;
+  z-index:90;
+  display:flex;
+  flex-direction:column;
+  background:
+    radial-gradient(circle at 50% 15%,rgba(168,230,31,.09),transparent 320px),
+    #050605;
+  padding:
+    calc(18px + env(safe-area-inset-top))
+    18px
+    calc(18px + env(safe-area-inset-bottom));
+  transform:translateX(102%);
+  opacity:0;
+  pointer-events:none;
+  transition:
+    transform .28s cubic-bezier(.2,.8,.2,1),
+    opacity .20s ease;
+}
+.location-page.open{
+  transform:translateX(0);
+  opacity:1;
+  pointer-events:auto;
+}
+.location-page-top{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.location-back{
+  width:42px;
+  height:42px;
+  border:1px solid #2d332d;
+  border-radius:13px;
+  background:#101410;
+  color:var(--lime);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+  line-height:1;
+  cursor:pointer;
+}
+.location-page-title{
+  font-size:20px;
+  font-weight:850;
+}
+.location-content{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:24px;
+}
+.location-content-inner{
+  max-width:420px;
+}
+.location-content h2{
+  margin:0 0 10px;
+  font-size:28px;
+  font-weight:900;
+}
+.location-content p{
+  margin:0;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.5;
+}
+
+
+.location-scroll{
+  flex:1;
+  overflow:auto;
+  -webkit-overflow-scrolling:touch;
+  padding:18px 0 6px;
+}
+.location-card{
+  max-width:560px;
+  margin:0 auto;
+  background:#0d100d;
+  border:1px solid #242a24;
+  border-radius:22px;
+  padding:18px;
+  box-shadow:0 14px 40px rgba(0,0,0,.28);
+}
+.location-kicker{
+  color:var(--lime);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.16em;
+  margin-bottom:8px;
+}
+.location-card h2{
+  margin:0 0 10px;
+  font-size:28px;
+  line-height:1.1;
+}
+.location-address{
+  margin:0;
+  font-size:17px;
+  line-height:1.45;
+  color:var(--text);
+}
+.location-coords{
+  margin:7px 0 16px;
+  color:var(--muted);
+  font-size:13px;
+}
+.map-wrap{
+  overflow:hidden;
+  border-radius:18px;
+  border:1px solid #2a302a;
+  background:#111;
+}
+.location-map{
+  width:100%;
+  height:340px;
+  display:block;
+  border:0;
+}
+.route-button{
+  margin-top:14px;
+  min-height:54px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:0 18px;
+  border-radius:16px;
+  background:var(--lime);
+  color:#071000;
+  text-decoration:none;
+  font-weight:900;
+  font-size:17px;
+}
+.route-button span{
+  font-size:24px;
+  line-height:1;
+}
+
 </style>
 </head>
 <body>
@@ -633,6 +777,44 @@ body.sidebar-open{
   </div>
   <div class="bonus-coming">Скоро <span>&nbsp;появится</span></div>
 </section>
+
+
+<section class="location-page" id="locationPage" aria-hidden="true">
+  <div class="location-page-top">
+    <button class="location-back" id="locationBack" aria-label="Назад">‹</button>
+    <div class="location-page-title">Как добраться</div>
+  </div>
+
+  <div class="location-scroll">
+    <div class="location-card">
+      <div class="location-kicker">СПОРТБАР</div>
+      <h2>Мы находимся здесь</h2>
+      <p class="location-address">Петропавловск-Камчатский, проспект Победы, 67/2</p>
+      <p class="location-coords">53.070557, 158.588874</p>
+
+      <div class="map-wrap">
+        <iframe
+          class="location-map"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=158.583874%2C53.067557%2C158.593874%2C53.073557&layer=mapnik&marker=53.070557%2C158.588874"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Карта Спортбара">
+        </iframe>
+      </div>
+
+      <a
+        class="route-button"
+        href="https://www.google.com/maps/dir/?api=1&destination=53.070557,158.588874"
+        target="_blank"
+        rel="noopener noreferrer">
+        Построить маршрут
+        <span>→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
 
 
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
@@ -652,10 +834,8 @@ body.sidebar-open{
       <span class="sidebar-icon">★</span>
       <span>Бонусная система</span>
     </button>
-    <a class="sidebar-link" href="#location" data-page="location" id="openLocationPage">
-      <span class="sidebar-icon">⌖</span>
-      <span>Как добраться</span>
-    </a>
+    <button class="sidebar-link" type="button" data-page="location" id="openLocationPage"><span class="sidebar-icon">⌖</span>
+      <span>Как добраться</span></button>
   </nav>
 
   <div class="sidebar-spacer"></div>
@@ -941,11 +1121,6 @@ body.sidebar-open{
     </div>
   </section>
 
-  <section class="info-page" id="location">
-    <h2>Как добраться</h2>
-    <p>Здесь позже добавим адрес, карту и кнопку построения маршрута.</p>
-  </section>
-
   <footer class="footer">
     <strong>СМОТРИ. БОЛЕЙ. ПОБЕЖДАЙ!</strong><br><br>
     Спорт Бар
@@ -1115,6 +1290,8 @@ const openLocationPage = document.getElementById('openLocationPage');
 
 const bonusPage = document.getElementById('bonusPage');
 const bonusBack = document.getElementById('bonusBack');
+const locationPage = document.getElementById('locationPage');
+const locationBack = document.getElementById('locationBack');
 
 function openSidebar() {
   sidebar?.classList.add('open');
@@ -1138,17 +1315,34 @@ function setSidebarActive(page) {
 
 function showBonusPage() {
   closeSidebar();
+  hideLocationPage(false);
   bonusPage?.classList.add('open');
   bonusPage?.setAttribute('aria-hidden', 'false');
   document.body.classList.add('sidebar-open');
   setSidebarActive('bonus');
 }
 
-function hideBonusPage() {
+function hideBonusPage(resetActive = true) {
   bonusPage?.classList.remove('open');
   bonusPage?.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('sidebar-open');
-  setSidebarActive('menu');
+  if (resetActive) setSidebarActive('menu');
+}
+
+function showLocationPage() {
+  closeSidebar();
+  hideBonusPage(false);
+  locationPage?.classList.add('open');
+  locationPage?.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('sidebar-open');
+  setSidebarActive('location');
+}
+
+function hideLocationPage(resetActive = true) {
+  locationPage?.classList.remove('open');
+  locationPage?.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('sidebar-open');
+  if (resetActive) setSidebarActive('menu');
 }
 
 appMenuBtn?.addEventListener('click', openSidebar);
@@ -1157,7 +1351,8 @@ sidebarOverlay?.addEventListener('click', closeSidebar);
 
 openMenuPage?.addEventListener('click', () => {
   closeSidebar();
-  hideBonusPage();
+  hideBonusPage(false);
+  hideLocationPage(false);
   setSidebarActive('menu');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
@@ -1165,16 +1360,15 @@ openMenuPage?.addEventListener('click', () => {
 openBonusPage?.addEventListener('click', showBonusPage);
 bonusBack?.addEventListener('click', hideBonusPage);
 
-openLocationPage?.addEventListener('click', () => {
-  closeSidebar();
-  hideBonusPage();
-  setSidebarActive('location');
-});
+openLocationPage?.addEventListener('click', showLocationPage);
+locationBack?.addEventListener('click', hideLocationPage);
 
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape') {
     if (bonusPage?.classList.contains('open')) {
       hideBonusPage();
+    } else if (locationPage?.classList.contains('open')) {
+      hideLocationPage();
     } else {
       closeSidebar();
     }
