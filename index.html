@@ -238,6 +238,29 @@ h2::after{content:"";height:3px;flex:1;background:linear-gradient(90deg,var(--li
 }
 .menu-card-content,.menu-card-arrow,.place-card strong,.mini-icon{z-index:3}
 
+
+/* ===== PHOTO FIX: no zoom / no baked-in labels ===== */
+.menu-card::before,
+.place-card::before{
+  transform:none !important;
+  background-size:100% auto !important;
+  background-repeat:no-repeat !important;
+  background-position:center center !important;
+  filter:none !important;
+}
+.menu-card:active::before{
+  transform:none !important;
+}
+.menu-card::after,
+.place-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.02) 0%,rgba(0,0,0,.10) 48%,rgba(0,0,0,.58) 100%) !important;
+}
+.menu-card-content,.menu-card-arrow,.place-card strong,.mini-icon{z-index:3}
+
 </style>
 </head>
 <body>
