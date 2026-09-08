@@ -640,13 +640,21 @@ const sections = links
   .filter(Boolean);
 
 function setActive(id, center = true) {
+  let activeLink = null;
+
   links.forEach(link => {
     const isActive = link.dataset.to === id;
     link.classList.toggle('active', isActive);
-    if (isActive && center) {
-      link.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
-    }
+    if (isActive) activeLink = link;
   });
+
+  if (activeLink && center) {
+    activeLink.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'center'
+    });
+  }
 }
 
 links.forEach(link => {
@@ -667,7 +675,7 @@ function updateActiveFromScroll() {
     }
   }
 
-  if (current) setActive(current.id, false);
+  if (current) setActive(current.id, true);
 }
 
 let scheduled = false;
