@@ -639,7 +639,24 @@ const sections = links
   .map(link => document.getElementById(link.dataset.to))
   .filter(Boolean);
 
+let currentActiveId = '';
+
+function centerActiveTab(link, smooth = true) {
+  if (!nav || !link) return;
+
+  const targetLeft =
+    link.offsetLeft -
+    (nav.clientWidth - link.offsetWidth) / 2;
+
+  nav.scrollTo({
+    left: Math.max(0, targetLeft),
+    behavior: smooth ? 'smooth' : 'auto'
+  });
+}
+
 function setActive(id, center = true) {
+  if (!id) return;
+
   let activeLink = null;
 
   links.forEach(link => {
@@ -648,54 +665,61 @@ function setActive(id, center = true) {
     if (isActive) activeLink = link;
   });
 
-  if (activeLink && center) {
-    activeLink.scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'center'
-    });
+  // Only animate the nav when the active section actually changes.
+  const changed = currentActiveId !== id;
+  currentActiveId = id;
+
+  if (activeLink && center && changed) {
+    centerActiveTab(activeLink, true);
   }
 }
 
 links.forEach(link => {
   link.addEventListener('click', () => {
-    setActive(link.dataset.to);
+    // Browser anchor navigation still scrolls the PAGE to the section.
+    // We move only the horizontal category bar.
+    setActive(link.dataset.to, true);
   });
 });
 
 function updateActiveFromScroll() {
-  const marker = (nav ? nav.offsetHeight : 0) + 28;
+  const marker = (nav ? nav.offsetHeight : 0) + 34;
   let current = sections[0];
 
   for (const section of sections) {
-    if (section.getBoundingClientRect().top <= marker) {
+    const top = section.getBoundingClientRect().top;
+    if (top <= marker) {
       current = section;
     } else {
       break;
     }
   }
 
-  if (current) setActive(current.id, true);
+  if (current) {
+    setActive(current.id, true);
+  }
 }
 
 let scheduled = false;
 window.addEventListener('scroll', () => {
   if (scheduled) return;
   scheduled = true;
+
   requestAnimationFrame(() => {
     updateActiveFromScroll();
     scheduled = false;
   });
-}, {passive:true});
+}, { passive: true });
 
 window.addEventListener('load', () => {
   updateActiveFromScroll();
+
   if (location.hash) {
     const id = location.hash.slice(1);
-    if (document.getElementById(id)) setActive(id);
+    const target = document.getElementById(id);
+    if (target) setActive(id, true);
   }
 });
-
 
 const TRANSLATIONS = {
   en: {"СПОРТ": "SPORT", "БАР": "BAR", "★ ТВОЙ БАР. ТВОИ ПРАВИЛА. ТВОЯ ПОБЕДА! ★": "★ YOUR BAR. YOUR RULES. YOUR WIN! ★", "ЧТО У НАС?":"WHAT WE HAVE","БОЛЬШЕ,":"MORE","ЧЕМ БАР":"THAN A BAR","Еда, напитки, трансляции и развлечения - всё для отличного вечера.":"Food, drinks, live sports and entertainment - everything for a great night.","АТМОСФЕРА СПОРТБАРА":"SPORTS BAR ATMOSPHERE","КУХНЯ": "KITCHEN", "НАПИТКИ": "DRINKS", "Напитки": "Drinks", "ПИВО": "BEER", "Пиво": "Beer", "Прямые трансляции": "Live broadcasts", "Русский бильярд": "Russian billiards", "Игровая зона PS5": "PS5 gaming zone", "Кальянная зона": "Hookah zone", "Приятная атмосфера": "Great atmosphere", "Отдых для души": "Relax and unwind", "Закуски": "Appetizers", "Горячее": "Hot dishes", "Фритюр": "Fried snacks", "Салаты": "Salads", "Супы": "Soups", "Десерты": "Desserts", "Коктейли": "Cocktails", "Крепкое": "Spirits", "Кальян": "Hookah", "Холодные": "Cold drinks", "Чай": "Tea", "Кофе": "Coffee", "Водка": "Vodka", "Настойки": "Infusions", "Джин": "Gin", "Ликер": "Liqueur", "Текила": "Tequila", "Ром": "Rum", "Виски": "Whiskey", "Коньяк": "Cognac", "Вино": "Wine", "Сельдь по домашнему": "Home-style herring", "Ассорти свежих овощей": "Fresh vegetable platter", "Ассорти домашних солений": "Homemade pickles platter", "Ассорти мясное": "Meat platter", "Ассорти сырное": "Cheese platter", "Рыбная нарезка": "Fish platter", "Креветки магаданские": "Magadan shrimp", "Мидии в ракушках": "Mussels in shells", "Стейк из свинины": "Pork steak", "Стейк из куриного бедра": "Chicken thigh steak", "Крылья BBQ": "BBQ wings", "Ассорти колбасок на гриле": "Grilled sausage platter", "Жареный картофель с грибами": "Fried potatoes with mushrooms", "Овощи гриль": "Grilled vegetables", "Лапша соба с курицей": "Soba noodles with chicken", "Бургер с картофелем фри": "Burger with fries", "Хот дог": "Hot dog", "Сендвич": "Sandwich", "Стейк Рибай": "Ribeye steak", "Говядина терияки с картофелем": "Teriyaki beef with potatoes", "Пивная тарелка": "Beer snack platter", "Картофель фри": "French fries", "Картофель дольками": "Potato wedges", "Гренки": "Croutons", "Луковые кольца": "Onion rings", "Дамплинги с морепродуктами": "Seafood dumplings", "Сырные палочки": "Cheese sticks", "Наггетсы": "Nuggets", "Греческий": "Greek salad", "Салат с говядиной": "Beef salad", "Салат с морепродуктами": "Seafood salad", "Чили салат с колбасками": "Chili salad with sausages", "Салат с лососем": "Salmon salad", "Цезарь с курицей": "Chicken Caesar", "Цезарь с креветкой": "Shrimp Caesar", "Табули": "Tabbouleh", "Том Ям": "Tom Yum", "Борщ": "Borscht", "Сырники со сгущенкой": "Syrniki with condensed milk", "Блинчики со сметаной": "Pancakes with sour cream", "Апероль шприц": "Aperol Spritz", "Негрони": "Negroni", "Голубая лагуна": "Blue Lagoon", "Джин и грех": "Gin and Sin", "Джон Коллинз": "John Collins", "Куба Либре": "Cuba Libre", "Мохито": "Mojito", "Маргарита": "Margarita", "Мартини": "Martini", "Лонг Айленд": "Long Island", "Пина Колада": "Piña Colada", "Текила Бум": "Tequila Boom", "Текила Санрайз": "Tequila Sunrise", "Виски - кола": "Whiskey - Cola", "Джин - спрайт": "Gin - Sprite", "Егерь - сок": "Jäger - Juice", "Флирт": "Flirt", "Мятный боллит": "Mint Bolide", "Нежный поцелуй в шею": "Gentle Kiss on the Neck", "Дюшес для взрослых": "Adult Duchess", "Белуга": "Beluga", "Онегин": "Onegin", "Грей Гус": "Grey Goose", "Царская": "Tsarskaya", "Чистые росы": "Chistye Rosy", "Алтай": "Altai", "Брусничная / малиновая / облепиховая / сливочная / смородиновая / витамин С / мятная / дюшес / жгучий апельсин": "Lingonberry / raspberry / sea buckthorn / creamy / blackcurrant / vitamin C / mint / duchess / hot orange", "Барристер": "Barrister", "Егермейстер": "Jägermeister", "Лос Корралес": "Los Corrales", "Рон Каладос": "Ron Calados", "Джек Дэниэлс": "Jack Daniel's", "Джек Дэниэлс Хани": "Jack Daniel's Honey", "Наки Томпсон": "Nucky Thompson", "Чивас": "Chivas", "Джемесон": "Jameson", "Джим Бим": "Jim Beam", "Арарат": "Ararat", "Асканели": "Askaneli", "Старый Кенигсберг": "Old Königsberg", "Алазанская долина": "Alazani Valley", "Киндзмараули": "Kindzmarauli", "Абрау-Дюрсо / п/сл / брют": "Abrau-Durso / semi-sweet / brut", "Мартини Просекко": "Martini Prosecco", "Лимонад - клюква": "Lemonade - cranberry", "Лимонад - облепиха": "Lemonade - sea buckthorn", "Лимонад - малина-имбирь": "Lemonade - raspberry-ginger", "Лимонад - манго-лимон": "Lemonade - mango-lemon", "Лимонад - смородина": "Lemonade - blackcurrant", "Морс": "Berry drink", "Чай классический": "Classic tea", "Чай авторский": "Signature tea", "Американо": "Americano", "Капучино": "Cappuccino", "Латте": "Latte", "Эспрессо": "Espresso", "Армянский кофе": "Armenian coffee", "Пиво на розлив": "Draft beer", "Пиво в бутылках": "Bottled beer", "СМОТРИ. БОЛЕЙ. ПОБЕЖДАЙ!": "WATCH. CHEER. WIN!", "Спорт Бар": "Sport Bar", "от 350 ₽": "from 350 ₽", "от 300 ₽": "from 300 ₽"},
