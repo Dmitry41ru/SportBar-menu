@@ -1,0 +1,190 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#070b08"><title>Трансляции — SPORTBAR 41</title><style>:root{color-scheme:dark;--green:#4be58a}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 75% 0%,#153020,#070b08 55%);color:#f5f6f4;font:16px -apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;min-height:100dvh}header,main,footer{max-width:1080px;margin:auto;padding:22px}header{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #26382c}.brand{font-weight:950;font-size:21px}.brand span,.eyebrow{color:var(--green)}a{color:inherit;text-decoration:none}.back{border:1px solid #46624d;border-radius:100px;padding:12px 16px;font-size:14px}.eyebrow{font-size:12px;font-weight:850;letter-spacing:.2em;text-transform:uppercase}h1{font-size:clamp(43px,9vw,88px);line-height:1;letter-spacing:-.06em;margin:17px 0 12px}p{color:#b8c1ba;line-height:1.5}.tabs{display:flex;gap:8px;margin:25px 0;flex-wrap:wrap}button{cursor:pointer;font:inherit}.tab,.reload{background:#121b15;color:#e4eee6;border:1px solid #35533d;border-radius:999px;padding:10px 17px}.tab[aria-pressed=true]{background:var(--green);color:#061108;border-color:var(--green);font-weight:800}.reload{margin:12px 0}.day{font-size:13px;letter-spacing:.12em;color:var(--green);margin:28px 0 12px;text-transform:uppercase}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:12px}.event{border:1px solid #2c4032;border-radius:20px;background:linear-gradient(155deg,#142019,#0b110e);padding:20px;min-width:0}.top{display:flex;justify-content:space-between;gap:10px;align-items:center;color:#a6b8aa;font-size:12px}.tag{border:1px solid #3a6347;color:var(--green);border-radius:99px;padding:5px 9px}.match{font-weight:850;font-size:clamp(20px,4vw,26px);line-height:1.2;margin:22px 0 10px;overflow-wrap:anywhere}.time{font-size:22px;font-weight:800}.sub{font-size:13px;color:#a6b8aa;margin-top:6px}.notice{border:1px solid #2c4032;border-radius:18px;padding:22px;color:#c5d3c8;background:#101812}.small{font-size:12px;color:#94a69a}footer{border-top:1px solid #26382c;color:#88968c;font-size:13px;margin-top:45px}@media(max-width:430px){header,main,footer{padding-left:18px;padding-right:18px}.brand{font-size:17px}.back{font-size:12px;padding:11px 12px}}
+/* SPORTBAR 41 · poster cards */
+.grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:18px}.event{padding:0;overflow:hidden;border-color:#304a38;background:#0a100d;box-shadow:0 18px 42px #0008}.poster{position:relative;min-height:290px;display:flex;flex-direction:column;justify-content:space-between;isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 50% 45%,#244d35 0%,#111c16 48%,#070b09 100%)}.poster:before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,#070b09 0%,transparent 40%,#070b09 100%);opacity:.5}.poster-head{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:17px}.poster-kicker{font-size:11px;font-weight:900;letter-spacing:.15em;color:#75f5a7}.poster-title{text-align:center;font-weight:950;font-size:clamp(25px,6vw,37px);line-height:1.04;letter-spacing:-.04em;text-shadow:0 3px 20px #000;overflow-wrap:anywhere}.versus{font-size:17px;font-style:italic;color:#70efa1}.contestants{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:8px;padding:0 14px 20px}.contender{min-width:0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px}.contender img{height:94px;width:94px;max-width:100%;object-fit:contain;filter:drop-shadow(0 8px 16px #0009)}.contender-name{font-size:clamp(15px,3.7vw,21px);font-weight:900;line-height:1.1;overflow-wrap:anywhere}.fallback-logo{width:100%;min-height:72px;display:grid;place-items:center;border:0;border-radius:10px;font-size:12px;font-weight:950;letter-spacing:.08em;color:#77eba3;background:linear-gradient(125deg,#172b1f,#09130d)}.poster-bottom{text-align:center;padding:0 14px 20px}.poster-bottom .poster-title{margin:14px 0}.poster-bottom .versus{font-size:21px}.details{padding:19px;border-top:1px solid #29402f}.details-time{font-size:31px;font-weight:950;color:#70efa1;letter-spacing:-.04em}.details-date{font-size:14px;color:#dce7de;margin-bottom:6px}.details-note{font-size:12px;color:#9fb2a4;margin-top:8px}.source-note{font-size:11px;color:#9fb2a4;margin-top:12px}.poster.ufc{background:linear-gradient(0deg,#070c09 0%,#07130ec9 62%,#08110ce0 100%),radial-gradient(ellipse at 50% 35%,#43664c,#17241b 52%,#080d0a)}.poster.ufc:after{content:'UFC';position:absolute;inset:15% 0 auto;text-align:center;font-size:clamp(90px,23vw,180px);font-weight:1000;letter-spacing:-.09em;color:#a3eaba10;z-index:-1}.poster.ufc .contestants{padding-top:35px}.poster.ufc .contender img{object-fit:contain;object-position:bottom;max-height:165px}.poster.ufc .contender-name{text-shadow:0 2px 14px #000}.poster.ufc .poster-title{font-size:clamp(25px,6vw,36px)}.event.featured{grid-column:1/-1}.event.featured .poster{min-height:265px}.event.featured .contender img{height:135px;width:135px}.event.featured .contender-name{font-size:clamp(19px,4vw,27px)}@media(max-width:430px){.poster{min-height:240px}.event.featured .poster{min-height:250px}.poster.ufc .contestants{padding-top:12px}.event.featured .contender img{height:110px;width:110px}}
+ .poster.ufc{min-height:205px!important;background:radial-gradient(ellipse at 50% 65%,#284735 0%,#0d1b13 47%,#080d0a 100%)}.poster.ufc:after{font-size:clamp(95px,22vw,165px);inset:22% 0 auto;color:#a3eaba0b}.poster.ufc .poster-bottom{margin:auto 0;padding:20px 22px 28px}.poster.ufc .poster-title{font-size:clamp(27px,6vw,43px);line-height:1.08}.event.featured .poster.ufc{min-height:205px}.poster.ufc .poster-head{position:relative;z-index:1} 
+/* v8: tournament poster and compact secondary events */
+.poster.ufc{background:radial-gradient(ellipse at 50% 85%,#385444 0%,#172b20 31%,#0a100d 73%)!important}
+.poster.ufc:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.72;background:repeating-linear-gradient(90deg,transparent 0 17%,#a2e8b00c 17.2% 17.5%,transparent 17.7% 24%),linear-gradient(160deg,#0009,transparent 55%,#000a);pointer-events:none}
+.poster.ufc:after{content:""!important;position:absolute;inset:auto 18% 16% !important;height:42%;border:2px solid #b1d9bb22;transform:perspective(280px) rotateX(55deg);clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);background:radial-gradient(ellipse,#a3f1b00d,transparent 70%);z-index:-1}
+.poster.ufc .poster-title{position:relative;z-index:1;max-width:680px;margin:auto;font-size:clamp(27px,6vw,44px)!important}
+.event.ufc-secondary{grid-column:auto!important;box-shadow:none}.ufc-secondary .poster.ufc{min-height:110px!important}.ufc-secondary .poster-head{padding:13px 15px 0}.ufc-secondary .poster-bottom{padding:9px 16px 15px!important}.ufc-secondary .poster-title{font-size:clamp(19px,4.5vw,26px)!important;text-align:left}.ufc-secondary .details{padding:13px 16px}.ufc-secondary .details-time{font-size:24px}.ufc-secondary .details-note{font-size:11px}
+.ufc-secondary .poster.ufc:after{display:none}
+.section-label{font-size:12px;color:#a9c6b1;letter-spacing:.1em;text-transform:uppercase;margin:18px 0 10px}
+.focus-label{padding:0 16px 6px;text-align:center;font-size:11px;letter-spacing:.12em;font-weight:900;color:#8ff0b4}.poster.ufc:has(.focus-label){min-height:245px!important}.poster.ufc:has(.focus-label) .contestants{padding:10px 14px 22px}.poster.ufc:has(.focus-label) .contender-name{font-size:clamp(18px,4.5vw,27px)}.poster.ufc:has(.focus-label) .poster-title{font-size:20px}
+/* v14 · polished broadcast cards; scheduling and selection remain unchanged */
+:root{--surface:#0d1711;--line:#294632;--muted:#a9bdb0}
+body{background:radial-gradient(ellipse at 85% -10%,#173a26 0%,transparent 44%),#070b08}
+header{padding-top:18px;padding-bottom:18px}.brand{letter-spacing:-.045em}
+main{padding-top:34px}.eyebrow{letter-spacing:.16em}h1{margin-top:12px;margin-bottom:10px;text-wrap:balance}
+main>p:first-of-type{max-width:650px;margin-top:0}.tabs{gap:9px;margin:25px 0 29px}
+.tab{transition:background .2s,border-color .2s,transform .2s;min-height:43px}.tab:active,.reload:active{transform:scale(.97)}
+.tab:focus-visible,.reload:focus-visible,.back:focus-visible{outline:2px solid #8affb6;outline-offset:3px}
+.day{display:flex;align-items:center;gap:12px;font-weight:850;letter-spacing:.09em;margin:30px 0 13px}
+.day:after{content:'';height:1px;flex:1;background:linear-gradient(90deg,#35583e,transparent)}
+.grid{gap:16px}.event{border:1px solid #35503c;border-radius:22px;box-shadow:0 16px 42px #0006;transition:border-color .2s,transform .2s}
+@media(hover:hover){.event:hover{border-color:#5b966b;transform:translateY(-2px)}}
+.poster{min-height:238px;background:radial-gradient(ellipse at 50% 95%,#245039 0%,#12251b 38%,#0a100d 76%)}
+.poster.football:after{content:'';position:absolute;width:220px;height:220px;border:1px solid #91e8a119;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);z-index:-1;box-shadow:0 0 0 30px #91e8a108,0 0 0 62px #91e8a105}
+.poster.football .poster-head{padding-bottom:8px}.poster-kicker{letter-spacing:.11em;font-size:10px}.tag{font-weight:700;white-space:nowrap;font-size:11px}
+.poster.football .contestants{flex:1;padding:12px 16px 26px;gap:10px}.poster.football .contender img{height:92px;width:92px;object-fit:contain}
+.poster.football .contender-name{font-size:clamp(17px,4.2vw,23px);line-height:1.14;max-width:220px;text-wrap:balance}
+.versus{font-size:13px;font-style:normal;font-weight:950;letter-spacing:.09em;background:#0a1c11;border:1px solid #4c7c58;border-radius:50%;width:37px;height:37px;display:grid;place-items:center;color:#8ff5b1;box-shadow:0 0 24px #4be58a18}
+.details{padding:17px 19px 19px;background:linear-gradient(180deg,#111d15,#0b130e);border-top:1px solid #34533c}
+.details-date{font-size:13px;color:#d9e7dc;font-weight:750;margin-bottom:10px}
+.details-note{font-size:12px;line-height:1.45;color:#a9bdb0;margin-top:6px}.details-time{font-size:clamp(32px,7vw,39px);font-variant-numeric:tabular-nums;line-height:1.12;margin:3px 0 6px;letter-spacing:-.055em}
+.source-note{border-top:1px solid #263b2d;padding-top:11px;margin-top:14px;line-height:1.5;color:#8da394}
+.poster.ufc .poster-head{padding-bottom:12px}.poster.ufc .contestants{gap:10px}.poster.ufc .contender-name{text-wrap:balance}.focus-label{line-height:1.5}
+.event.ufc-secondary .details-time{font-size:29px}.notice{line-height:1.5}
+/* v15: original football names and compact UFC event posters */
+.poster.ufc .poster-title{font-size:clamp(22px,5.2vw,34px)!important;line-height:1.13;letter-spacing:-.035em;text-wrap:balance}
+.event.ufc-secondary .poster.ufc{min-height:125px!important}.event.ufc-secondary .poster-bottom{padding:12px 17px 20px!important}.event.ufc-secondary .poster-title{font-size:clamp(19px,4.5vw,25px)!important;line-height:1.18}
+.poster.ufc .poster-bottom{padding-left:18px;padding-right:18px}
+.poster.football .contender-name{overflow-wrap:normal;word-break:normal;hyphens:auto}
+.reload{min-height:44px;margin-top:23px}footer{margin-top:40px}
+@media(max-width:430px){main{padding-top:26px}.tabs{gap:7px}.tab{padding:10px 13px;font-size:13px}.poster.football .contestants{padding-left:10px;padding-right:10px}.poster.football .contender img{height:77px;width:77px}.poster.football .contender-name{font-size:clamp(14px,3.8vw,17px)}.versus{width:32px;height:32px;font-size:11px}.details{padding:17px}.poster-head{padding:15px 13px}}
+@media(prefers-reduced-motion:reduce){.event,.tab{transition:none!important}}
+/* v16 · UFC-specific layout; football remains unchanged */
+.poster.ufc:has(.ufc-name-versus){min-height:230px!important}
+.poster.ufc .ufc-event-label{font-size:11px;font-weight:850;letter-spacing:.16em;color:#8af2af;text-align:center;padding:8px 12px 0}
+.poster.ufc .ufc-name-versus{display:flex;align-items:center;justify-content:center;gap:12px;padding:15px 16px 0;font-weight:950;font-size:clamp(21px,5vw,33px);line-height:1.12;text-align:center;text-wrap:balance;overflow-wrap:anywhere}
+.poster.ufc .ufc-name-versus>span:first-child,.poster.ufc .ufc-name-versus>span:last-child{flex:1;min-width:0}
+.poster.ufc .ufc-name-vs{flex:0 0 auto;font-size:12px;color:#8ff5b1;border:1px solid #4c7c58;border-radius:50%;height:34px;width:34px;display:grid;place-items:center}
+.poster.ufc:has(.ufc-name-versus) .poster-bottom{min-height:12px;padding:0!important}
+.event.ufc-secondary .poster.ufc{min-height:105px!important}
+.event.ufc-secondary .poster.ufc .poster-title{font-size:clamp(19px,4vw,25px)!important;line-height:1.16}
+
+/* v17 · tighter UFC Fight Night and two-line Contender Series posters */
+.poster.ufc:has(.ufc-name-versus){min-height:165px!important;justify-content:flex-start}
+.poster.ufc:has(.ufc-name-versus) .poster-head{padding-bottom:0}
+.poster.ufc:has(.ufc-name-versus) .ufc-event-label{padding-top:12px}
+.poster.ufc:has(.ufc-name-versus) .ufc-name-versus{flex:1;padding:12px 16px 18px;font-size:clamp(20px,4.8vw,32px)}
+.poster.ufc:has(.ufc-name-versus) .poster-bottom{display:none}
+.event.ufc-secondary .poster.ufc{min-height:110px!important}
+.ufc-secondary .contender-series-title{font-size:clamp(21px,4.6vw,29px);font-weight:950;line-height:1.12;letter-spacing:-.035em}
+.ufc-secondary .contender-series-meta{margin-top:6px;font-size:clamp(13px,3.1vw,17px);font-weight:700;line-height:1.3;color:#b5c9ba}
+</style></head><body><header><a class="brand" href="index.html">SPORTBAR <span>41</span></a><a class="back" href="index.html">← На главную</a></header><main><div class="eyebrow">Футбол · UFC</div><h1>ТРАНСЛЯЦИИ</h1><p>Ближайшие футбольные матчи и турниры UFC. Все события — по времени Петропавловска-Камчатского (UTC+12).</p><div class="tabs" role="group" aria-label="Вид спорта"><button class="tab" data-filter="all" aria-pressed="true">Все события</button><button class="tab" data-filter="football" aria-pressed="false">⚽ Футбол</button><button class="tab" data-filter="ufc" aria-pressed="false">🥊 UFC</button></div><div id="status" class="notice" role="status">Загружаем расписание…</div><div id="events" aria-live="polite"></div><button class="reload" id="reload" type="button">↻ Обновить расписание</button><p class="small">Это расписание спортивных событий, а не подтверждение показа в баре. Перед визитом уточните трансляцию у сотрудников. Данные: ESPN; обновляются при открытии страницы.</p></main><footer>SPORTBAR 41 · Петропавловск-Камчатский</footer><script>
+(()=>{'use strict';
+const TZ='Asia/Kamchatka',DAY=86400000;let all=[],filter='all';const status=document.getElementById('status'),root=document.getElementById('events');
+const leagues=[['uefa.champions','UEFA Champions League'],['eng.1','Premier League'],['esp.1','LaLiga'],['ita.1','Serie A'],['ger.1','Bundesliga'],['fra.1','Ligue 1'],['rus.1','Russian Premier League']];
+const aliases={'Arsenal':'Арсенал','Manchester City':'Манчестер Сити','Manchester United':'Манчестер Юнайтед','Liverpool':'Ливерпуль','Chelsea':'Челси','Tottenham Hotspur':'Тоттенхэм','Real Madrid':'Реал Мадрид','Barcelona':'Барселона','FC Barcelona':'Барселона','Atlético Madrid':'Атлетико Мадрид','Bayern Munich':'Бавария','Bayern München':'Бавария','Borussia Dortmund':'Боруссия Дортмунд','Paris Saint-Germain':'ПСЖ','Paris Saint-Germain FC':'ПСЖ','Inter Milan':'Интер','Juventus':'Ювентус','AC Milan':'Милан','Napoli':'Наполи','Zenit St Petersburg':'Зенит','Spartak Moscow':'Спартак','CSKA Moscow':'ЦСКА','Dynamo Moscow':'Динамо Москва','Lokomotiv Moscow':'Локомотив Москва'};
+const fighters={'Islam Makhachev':'Ислам Махачев','Khamzat Chimaev':'Хамзат Чимаев','Petr Yan':'Пётр Ян','Magomed Ankalaev':'Магомед Анкалаев','Alexander Volkov':'Александр Волков','Umar Nurmagomedov':'Умар Нурмагомедов','Movsar Evloev':'Мовсар Евлоев','Sergei Pavlovich':'Сергей Павлович','Shara Magomedov':'Шара Магомедов','Tagir Ulanbekov':'Тагир Уланбеков','Rafael Fiziev':'Рафаэль Физиев','Merab Dvalishvili':'Мераб Двалишвили','Giga Chikadze':'Гига Чикадзе','Joanderson Brito':'Жоандерсон Брито','Arman Tsarukyan':'Арман Царукян','Mauricio Ruffy':'Маурисио Руффи'};
+const ufcTitle=(name)=>{let t=String(name||'').trim();if(!t||/^(tba|tbd|to be announced)$/i.test(t))return 'Турнир UFC';t=t.replace(/^UFC Fight Night\s*:?/i,'UFC · Вечер боёв:').replace(/^Dana White['’]s Contender Series\s*:?/i,'Претендентская серия Даны Уайта:').replace(/Season\s*(\d+)\s*,?\s*Week\s*(\d+)/i,(_,season,week)=>`сезон ${season}, неделя ${week}`).replace(/\bvs\.?\s*/gi,' — ');return t.replace(/\bVan\b/g,'Ван').replace(/\bPantoja\b/g,'Пантожа').replace(/\bTsarukyan\b/g,'Царукян').replace(/\bRuffy\b/g,'Руффи')};
+// Editorial focus: these names are an explicit, editable audience-interest list, not a claim about the official main event.
+const focusNames=['Arman Tsarukyan','Islam Makhachev','Khamzat Chimaev','Petr Yan','Magomed Ankalaev','Alexander Volkov','Umar Nurmagomedov','Movsar Evloev','Sergei Pavlovich','Shara Magomedov','Tagir Ulanbekov','Rafael Fiziev','Merab Dvalishvili'];
+const normName=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-zа-яё ]/g,' ').replace(/\s+/g,' ').trim();
+const isPlaceholder=s=>!s||/^(tba|tbd|opponent tba|to be announced|unknown)$/i.test(String(s).trim());
+function athleteName(x){return x?.athlete?.displayName||x?.athlete?.fullName||x?.athlete?.name||x?.displayName||x?.fullName||x?.name||x?.fighter?.displayName||x?.fighter?.name||''}
+// ESPN's MMA scoreboard may include the whole fight card in competitions,
+// whereas summary may be unavailable or contain only the headline bout.
+function boutCandidates(data){
+ const found=[],seen=new Set(),pairs=new Set();
+ const visit=(node,depth=0)=>{
+  if(!node||typeof node!=='object'||depth>13||seen.has(node))return;
+  seen.add(node);
+  if(Array.isArray(node)){node.forEach(x=>visit(x,depth+1));return}
+  // A pair must belong to the same fight/competition, not an arbitrary event-wide list.
+  const entries=[node.competitors,node.athletes,node.fighters,node.participants].find(a=>Array.isArray(a)&&a.length===2);
+  if(entries){const people=entries.map(x=>({name:athleteName(x),image:imgUrl(x?.athlete||x?.fighter||x)}));
+   if(people.every(x=>!isPlaceholder(x.name)&&x.name.trim().split(/\s+/).length>=2)){
+    const key=people.map(x=>normName(x.name)).sort().join('|');
+    if(!pairs.has(key)){
+     pairs.add(key);
+     // A scheduled fight start is used only when the feed explicitly supplies a
+     // competition-level date distinct from the tournament's start.
+     const scheduled=node.date||node.startDate||node.startTime||'';
+     found.push({people,scheduled,competitionId:String(node.id||'')});
+    }
+   }
+  }
+  for(const [key,value] of Object.entries(node)){
+   if(['athlete','fighter','team','statistics','leaders','odds','records','news','articles','videos','standings','boxscore','headshot','logo','logos'].includes(key))continue;
+   if(value&&typeof value==='object')visit(value,depth+1)
+  }
+ };visit(data);return found
+}
+function chooseFocus(data){const candidates=boutCandidates(data);let best=null,score=0;
+ for(const candidate of candidates){const points=candidate.people.reduce((sum,p)=>{const n=normName(p.name);const idx=focusNames.findIndex(f=>normName(f)===n);return sum+(idx<0?0:1000-idx)},0);if(points>score){score=points;best=candidate}}
+ return best
+}
+async function enrichUfc(e){
+ // Check all available sources, including the original scoreboard fight card.
+ const candidates=[chooseFocus(e.rawEvent)];
+ const urls=[
+  `https://site.api.espn.com/apis/site/v2/sports/mma/ufc/summary?event=${encodeURIComponent(e.id)}`,
+  `https://site.web.api.espn.com/apis/common/v3/sports/mma/ufc/summary?event=${encodeURIComponent(e.id)}`
+ ];
+ if(!candidates[0]){
+  for(const url of urls){try{const candidate=chooseFocus(await request(url));if(candidate){candidates.push(candidate);break}}catch(err){console.warn('Источник карда недоступен:',e.id,err)}}
+ }
+ const selected=candidates.find(Boolean);
+ if(selected){
+  e.sides=selected.people.map(p=>({name:ru(p.name,'ufc'),originalName:p.name,image:p.image}));
+  e.focus=true;
+  const d=new Date(selected.scheduled);
+  if(selected.scheduled&&Number.isFinite(d.getTime())&&Math.abs(d.getTime()-e.date.getTime())>60000&&d.getTime()>=e.date.getTime()&&d.getTime()<=e.date.getTime()+24*3600000){
+   e.boutScheduled=d;
+  }
+ }else console.info('Не найден бой из списка интереса для турнира',e.id,'— показана афиша турнира');
+ delete e.rawEvent;return e
+}
+// Never calculate a fight time from its order on the card or an arbitrary offset.
+function ufcTiming(e){
+ if(e.kind!=='ufc')return null;
+ if(e.focus&&e.boutScheduled)return{date:e.boutScheduled,label:'Время поединка по расписанию ESPN',note:'Время выхода бойцов может измениться. Начало турнира: '+fmt(e.date,{hour:'2-digit',minute:'2-digit',hour12:false})+' · время Камчатки.',kind:'scheduled'};
+ return{date:e.date,label:e.focus?'Начало турнира (не время выбранного боя)':'Начало турнира',note:e.focus?'Время выбранного боя в источнике не указано.':'',kind:'event'};
+}
+const ufcTier=(name)=>/^UFC\s*\d+\b/i.test(name)?'major':/^UFC Fight Night\b/i.test(name)?'regular':'secondary';
+const translit=(name)=>{const map={'sh':'ш','ch':'ч','zh':'ж','kh':'х','ts':'ц','ya':'я','yu':'ю','yo':'ё','th':'т','ph':'ф','ck':'к','qu':'кв'};return String(name||'').split(/(\s+|-)/).map(w=>{if(!w.trim()||w==='-')return w;let a=w.toLowerCase().replace(/sh|ch|zh|kh|ts|ya|yu|yo|th|ph|ck|qu|[a-z]/g,x=>map[x]||({'a':'а','b':'б','c':'к','d':'д','e':'е','f':'ф','g':'г','h':'х','i':'и','j':'дж','k':'к','l':'л','m':'м','n':'н','o':'о','p':'п','q':'к','r':'р','s':'с','t':'т','u':'у','v':'в','w':'в','x':'кс','y':'й','z':'з'}[x]||x));return a[0]?.toUpperCase()+a.slice(1)}).join('')};
+const ru=(name,kind)=>aliases[name]||fighters[name]||(kind==='ufc'?translit(name):name)||'Участник';const fmt=(d,opts)=>new Intl.DateTimeFormat('ru-RU',{timeZone:TZ,...opts}).format(d);const compact=d=>d.toISOString().slice(0,10).replace(/-/g,'');
+const imgUrl=(obj)=>{let v=obj?.headshot?.href||obj?.headshot?.url||obj?.logo||obj?.logos?.[0]?.href||obj?.logos?.[0]?.url||'';try{const u=new URL(v);return u.protocol==='https:'&&(/(^|\.)espncdn\.com$/.test(u.hostname))?u.href:''}catch{return ''}};
+function parse(e,kind,league,now){const d=new Date(e.date||e.competitions?.[0]?.date);if(!Number.isFinite(d.getTime())||d.getTime()<now-3*3600000||d.getTime()>now+21*DAY||e.status?.type?.state==='post')return null;
+const comps=e.competitions||[];let sides=[],headline=e.name||e.shortName||'Турнир UFC';if(kind==='football'){const teams=comps[0]?.competitors||[];if(teams.length<2)return null;sides=teams.slice(0,2).map(x=>({name:x.team?.displayName||x.team?.shortDisplayName||x.team?.name||'Team',image:imgUrl(x.team)}));headline=sides.map(x=>x.name).join(' — ')}else{ // One UFC event per tournament; do not infer a main event from array order.
+ const title=String(e.name||e.shortName||'Турнир UFC').trim();
+ headline=ufcTitle(title);
+ sides=[];
+}
+return{id:String(e.id),kind,league,date:d,headline,sides,focus:false,featured:kind==='ufc'&&ufcTier(String(e.name||''))==='major',tier:kind==='ufc'?ufcTier(String(e.name||'')):'',rawTitle:kind==='ufc'?String(e.name||''):'',rawEvent:kind==='ufc'?e:null} }
+async function request(url){const r=await fetch(url,{headers:{Accept:'application/json'},signal:AbortSignal.timeout(12000)});if(!r.ok)throw Error('HTTP '+r.status);return r.json()}
+const el=(tag,cls,txt)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(txt!==undefined)n.textContent=txt;return n};
+function logo(side){const wrap=el('div','contender');if(side.image){const img=el('img');img.src=side.image;img.alt='';img.loading='lazy';img.referrerPolicy='no-referrer';img.onerror=()=>img.remove();wrap.append(img)}wrap.append(el('div','contender-name',side.name));return wrap}
+// Editorial selection: show fixtures involving clubs that are likely to interest local guests.
+// This is an editable club list, not a claim about match quality or ESPN rankings.
+const footballClubs=new Set(['Арсенал','Манчестер Сити','Манчестер Юнайтед','Ливерпуль','Челси','Тоттенхэм','Реал Мадрид','Барселона','Атлетико Мадрид','Бавария','Боруссия Дортмунд','ПСЖ','Интер','Ювентус','Милан','Наполи','Зенит','Спартак','ЦСКА','Динамо Москва','Локомотив Москва']);
+function footballPriority(e){if(e.kind!=='football')return 0;return e.sides.reduce((n,side)=>n+(footballClubs.has(aliases[side.name]||side.name)?1:0),0)}
+function selectFootball(events){const byDay=new Map();for(const e of events){if(e.kind!=='football'||!footballPriority(e))continue;const key=fmt(e.date,{year:'numeric',month:'2-digit',day:'2-digit'});if(!byDay.has(key))byDay.set(key,[]);byDay.get(key).push(e)}const selected=new Set();for(const matches of byDay.values()){matches.sort((a,b)=>footballPriority(b)-footballPriority(a)||a.date-b.date).slice(0,4).forEach(e=>selected.add(e))}return events.filter(e=>e.kind!=='football'||selected.has(e))}
+function render(){root.replaceChildren();const data=selectFootball(all.filter(e=>filter==='all'||e.kind===filter));if(!data.length){if(all.length)root.append(el('div','notice',filter==='football'?'В ближайшем расписании пока нет матчей выбранных клубов.':'В выбранной категории ближайших событий нет.'));return}const days=new Map();for(const e of data){const key=fmt(e.date,{weekday:'long',day:'numeric',month:'long'});if(!days.has(key))days.set(key,[]);days.get(key).push(e)}for(const [day,items]of days){root.append(el('h2','day',day));const grid=el('div','grid');for(const e of items.sort((a,b)=>(a.kind==='ufc'&&a.tier==='secondary'?1:0)-(b.kind==='ufc'&&b.tier==='secondary'?1:0)||a.date-b.date)){const card=el('article','event'+(e.featured?' featured':'')+(e.kind==='ufc'&&e.tier==='secondary'?' ufc-secondary':''));const poster=el('div','poster '+e.kind);const head=el('div','poster-head');head.append(el('span','poster-kicker',e.kind==='ufc'?(e.tier==='major'?'UFC · НОМЕРНОЙ ТУРНИР':e.tier==='secondary'?'ЕДИНОБОРСТВА · ДРУГИЕ СОБЫТИЯ':'UFC · ВЕЧЕР БОЁВ'):'⚽ МАТЧ В ФОКУСЕ'),el('span','tag',e.league));poster.append(head);if(e.kind==='ufc'&&e.focus){poster.append(el('div','focus-label','БОЙ В ФОКУСЕ · '+e.headline))}else if(e.kind==='ufc'&&e.tier==='regular'&&e.sides.length!==2){const match=String(e.rawTitle||'').match(/(?:UFC Fight Night\s*:?\s*)?(.+?)\s+(?:vs\.?|—|–)\s+(.+)$/i);if(match){poster.append(el('div','ufc-event-label','ПАРА В НАЗВАНИИ ТУРНИРА'));const names=el('div','ufc-name-versus');names.append(el('span','',match[1].trim()),el('span','ufc-name-vs','VS'),el('span','',match[2].trim()));poster.append(names)}}if(e.sides.length===2){const contestants=el('div','contestants');contestants.append(logo(e.sides[0]),el('span','versus','VS'),logo(e.sides[1]));poster.append(contestants)}else{const bottom=el('div','poster-bottom');if(e.kind==='ufc'&&e.tier==='secondary'&&/^Dana White['’]s Contender Series\b/i.test(e.rawTitle||'')){
+ const series=String(e.rawTitle||'').match(/Season\s*(\d+)\s*,?\s*Week\s*(\d+)/i);
+ bottom.append(el('div','contender-series-title','Претендентская серия'));
+ if(series)bottom.append(el('div','contender-series-meta',`Сезон ${series[1]} · Неделя ${series[2]}`));
+ else bottom.append(el('div','contender-series-meta','Даны Уайта'));
+}else if(!(e.kind==='ufc'&&e.tier==='regular'&&poster.querySelector('.ufc-name-versus')))bottom.append(el('div','poster-title',e.headline));poster.append(bottom)}const details=el('div','details');const timing=ufcTiming(e),shown=timing?.date||e.date;
+ details.append(el('div','details-date',fmt(shown,{day:'numeric',month:'long',year:'numeric'})));
+ details.append(el('div','details-note',timing?.label||(e.kind==='football'?'Начало матча':'Начало турнира')));
+ details.append(el('div','details-time',fmt(shown,{hour:'2-digit',minute:'2-digit',hour12:false})));
+ 
+ if(timing?.note)details.append(el('div','details-note',timing.note));
+ 
+ 
+ details.append(el('div','source-note','Расписание: ESPN · Показ в баре уточняйте'));card.append(poster,details);grid.append(card)}root.append(grid)}}
+// ESPN may return an empty football scoreboard for a multi-week date range.
+// Retry a league with its default schedule, then with seven individual dates.
+async function footballEvents(slug,start,end,now){
+ const base=`https://site.api.espn.com/apis/site/v2/sports/soccer/${slug}/scoreboard`;
+ const urls=[`${base}?dates=${start}-${end}&limit=250`,`${base}?limit=250`];
+ let found=[],failures=0;
+ for(const url of urls){try{const data=await request(url);const events=Array.isArray(data.events)?data.events:[];
+   found.push(...events);if(found.some(e=>parse(e,'football','',now)))break;
+  }catch(err){failures++;console.warn('Не удалось получить футбольное расписание:',slug,err)}}
+ if(!found.some(e=>parse(e,'football','',now))){
+  const days=Array.from({length:7},(_,i)=>compact(new Date(now+i*DAY)));
+  const responses=await Promise.allSettled(days.map(day=>request(`${base}?dates=${day}&limit=100`)));
+  responses.forEach((r,i)=>{if(r.status==='fulfilled'&&Array.isArray(r.value.events))found.push(...r.value.events);
+    else if(r.status==='rejected')console.warn('Футбольное расписание недоступно:',slug,days[i],r.reason)});
+ }
+ const unique=new Map();for(const e of found)if(e?.id)unique.set(String(e.id),e);
+ if(!unique.size&&failures===urls.length)console.warn('ESPN не ответил по лиге:',slug);
+ return [...unique.values()]
+}
+async function load(){status.hidden=false;status.textContent='Загружаем расписание…';root.replaceChildren();const now=Date.now(),start=compact(new Date(now-DAY)),end=compact(new Date(now+21*DAY));const sources=leagues.map(([slug,label])=>({kind:'football',label,url:`https://site.api.espn.com/apis/site/v2/sports/soccer/${slug}/scoreboard?dates=${start}-${end}&limit=250`}));sources.push({kind:'ufc',label:'UFC',url:`https://site.api.espn.com/apis/site/v2/sports/mma/ufc/scoreboard?dates=${start}-${end}&limit=100`});const results=await Promise.allSettled(sources.map(async src=>(src.kind==='football'?await footballEvents(src.url.split('/soccer/')[1].split('/')[0],start,end,now):(await request(src.url)).events||[]).map(e=>parse(e,src.kind,src.label,now)).filter(Boolean)));const errors=results.filter(r=>r.status==='rejected').length,map=new Map();results.forEach(r=>{if(r.status==='fulfilled')r.value.forEach(e=>map.set(e.kind+e.id,e))});all=[...map.values()].sort((a,b)=>a.date-b.date);const ufc=all.filter(e=>e.kind==='ufc');await Promise.allSettled(ufc.map(enrichUfc));status.hidden=!!all.length&&!errors;if(!all.length)status.textContent=errors===sources.length?'Не удалось загрузить расписание. Попробуйте позже.':'На ближайшие три недели событий в источнике не найдено.';else if(errors){status.hidden=true;console.warn('Некоторые спортивные источники недоступны:',errors);}render()}
+document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{filter=btn.dataset.filter;document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));render()}));document.getElementById('reload').addEventListener('click',load);load()})();
+</script></body></html>

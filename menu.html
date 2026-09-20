@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#050605" name="theme-color"/>
+<meta content="dark" name="color-scheme"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<title>SPORTBAR 41 — Меню</title>
+<style>
+:root{
+  --bg:#070907;
+  --card:#0d100d;
+  --line:#252b25;
+  --lime:#a8e61f;
+  --text:#f4f4f2;
+  --muted:#a9ada7;
+}
+*{box-sizing:border-box}
+html{
+  scroll-behavior:smooth;
+  background:#050605;
+  color-scheme:dark;
+}
+body{
+  margin:0;
+  min-height:100dvh;
+  background-color:#050605;
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(168,230,31,.10), transparent 28%),
+    linear-gradient(#050605,#0a0c09);
+  color:var(--text);
+}
+.app{max-width:760px;margin:0 auto;min-height:100dvh;padding-bottom:calc(90px + env(safe-area-inset-bottom));background:#050605}
+.hero{
+  padding:28px 18px 20px;
+  text-align:center;
+  border-bottom:1px solid var(--line);
+}
+.logo-main{
+  font-size:56px;
+  line-height:.9;
+  font-weight:900;
+  letter-spacing:-2px;
+  text-transform:uppercase;
+}
+.logo-main span{display:block;color:var(--lime);font-style:italic;font-size:52px}
+.tagline{
+  margin-top:14px;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.6px;
+  color:#e8e8e4;
+}
+.quick{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  padding:16px;
+}
+.quick a{
+  min-height:112px;
+  border:1px solid rgba(168,230,31,.65);
+  border-radius:18px;
+  text-decoration:none;
+  color:white;
+  background:linear-gradient(180deg,#0d110d,#090b09);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-weight:900;
+  font-size:18px;
+}
+.quick .ico{font-size:30px;color:var(--lime)}
+.nav{
+  position:sticky;top:0;z-index:20;
+  display:flex;gap:8px;overflow-x:auto;
+  padding:10px 12px;
+  background:rgba(5,6,5,.94);
+  backdrop-filter:blur(12px);
+  border-top:1px solid #171b17;
+  border-bottom:1px solid #171b17;
+}
+.nav::-webkit-scrollbar{display:none}
+.nav a{
+  border:1px solid #2a302a;
+  background:#101310;
+  color:#ddd;
+  padding:10px 13px;
+  border-radius:999px;
+  white-space:nowrap;
+  font-size:13px;
+  text-decoration:none;
+  display:block;
+}
+.nav a.active{border-color:var(--lime);color:var(--lime)}
+section{padding:18px 16px 6px;scroll-margin-top:76px}
+h2{
+  margin:0 0 12px;
+  font-size:29px;
+  text-transform:uppercase;
+  letter-spacing:.3px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+h2::after{content:"";height:3px;flex:1;background:linear-gradient(90deg,var(--lime),transparent)}
+.sub{color:var(--muted);font-size:13px;margin:-4px 0 12px}
+.menu-list{
+  background:rgba(13,16,13,.88);
+  border:1px solid #1f251f;
+  border-radius:18px;
+  overflow:hidden;
+}
+.item{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:12px;
+  padding:13px 14px;
+  border-bottom:1px solid #232823;
+}
+.item:last-child{border-bottom:none}
+.name{font-size:15px;line-height:1.3}
+.meta{font-size:12px;color:var(--muted);margin-top:4px}
+.price{font-weight:900;color:white;white-space:nowrap;text-align:right}
+.price small{display:block;color:var(--muted);font-weight:400;margin-bottom:3px}
+.features{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+  padding:16px;
+}
+.feature{
+  background:#0d100d;border:1px solid #242a24;border-radius:14px;
+  padding:14px 8px;text-align:center;font-size:12px;font-weight:700;
+}
+.feature b{display:block;color:var(--lime);font-size:22px;margin-bottom:7px}
+.footer{
+  text-align:center;padding:28px 16px 8px;color:#c8ccc6;
+}
+.footer strong{color:var(--lime)}
+.notice{
+  margin:8px 16px 0;
+  padding:12px 14px;
+  border:1px solid #303630;
+  border-radius:14px;
+  color:#adb2aa;
+  font-size:12px;
+  line-height:1.45;
+}
+@media(min-width:700px){
+  .quick{grid-template-columns:repeat(4,1fr)}
+  .features{grid-template-columns:repeat(6,1fr)}
+}
+
+.drink-group{
+  margin:20px 2px 8px;
+  color:var(--lime);
+  font-size:17px;
+  text-transform:uppercase;
+  letter-spacing:.8px;
+}
+.drink-group:first-of-type{margin-top:4px}
+#strong .menu-list{margin-bottom:8px}
+
+
+
+.language-wrap{
+  position:absolute;
+  top:14px;
+  right:14px;
+  z-index:30;
+}
+.language-btn{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  border:1px solid rgba(168,230,31,.55);
+  background:rgba(10,13,10,.92);
+  color:var(--lime);
+  font-size:23px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+.language-menu{
+  position:absolute;
+  top:52px;
+  right:0;
+  min-width:170px;
+  padding:6px;
+  border:1px solid #2b322b;
+  border-radius:14px;
+  background:rgba(10,13,10,.98);
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+  display:none;
+}
+.language-menu.open{display:block}
+.language-option{
+  width:100%;
+  border:0;
+  background:transparent;
+  color:var(--text);
+  text-align:left;
+  padding:11px 12px;
+  border-radius:10px;
+  font-size:14px;
+  cursor:pointer;
+}
+.language-option.active,
+.language-option:active{
+  background:#151a15;
+  color:var(--lime);
+}
+.hero{position:relative}
+
+
+.showcase{padding:18px 14px 24px;background:radial-gradient(circle at 8% 5%,rgba(168,230,31,.10),transparent 28%),linear-gradient(180deg,#0a0d0a,#070907)}
+.showcase-head{padding:4px 3px 17px}.showcase-kicker,.place-title{color:var(--lime);font-size:11px;font-weight:800;letter-spacing:.25em;text-transform:uppercase}
+.showcase-title{margin:7px 0 0;font-size:31px;line-height:.98;font-weight:900;letter-spacing:-1px;text-transform:uppercase}.showcase-title span{color:var(--lime)}
+.showcase-sub{margin:9px 0 0;color:var(--muted);font-size:13px;line-height:1.45}
+.menu-cards,.place-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.menu-card,.place-card{border-radius:20px;overflow:hidden;position:relative;color:var(--text);display:flex;align-items:flex-end;padding:14px;background:#101310}
+.menu-card{min-height:185px;border:1px solid rgba(168,230,31,.5);text-decoration:none;-webkit-tap-highlight-color:transparent}
+.place-card{min-height:155px;border:1px solid #2a302a}
+.menu-card:before,.place-card:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(5,7,5,.18) 38%,rgba(5,7,5,.95)),var(--card-image);background-size:cover;background-position:center}
+.menu-card-content,.place-card strong{position:relative;z-index:2}.menu-card-content{width:100%}
+.menu-card-icon,.mini-icon{border:1.5px solid var(--lime);display:flex;align-items:center;justify-content:center;background:rgba(5,8,5,.72)}
+.menu-card-icon{width:38px;height:38px;border-radius:11px;font-size:20px;margin-bottom:10px}
+.menu-card strong{display:block;font-size:22px;line-height:1;font-weight:900}
+.menu-card-arrow{position:absolute;right:14px;bottom:13px;z-index:3;width:32px;height:32px;border:1.5px solid var(--lime);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--lime);font-size:19px}
+.place-title{margin:25px 3px 11px}.place-card strong{font-size:17px;line-height:1.08;text-shadow:0 2px 10px #000}
+.mini-icon{position:absolute;z-index:2;left:13px;top:13px;width:32px;height:32px;border-radius:9px}
+@media(min-width:700px){.menu-cards{grid-template-columns:repeat(4,1fr)}.place-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* Local photo assets: all images live inside /images, no external requests */
+.menu-card::before,.place-card::before{
+  background-position:center;
+  filter:saturate(.92) contrast(1.05);
+}
+.menu-card::after,.place-card::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.04) 0%,rgba(0,0,0,.10) 42%,rgba(0,0,0,.68) 100%);
+}
+.menu-card-content,.menu-card-arrow,.place-card strong,.mini-icon{z-index:3}
+
+
+/* ===== STABLE SINGLE-FILE PHOTO CARDS ===== */
+.menu-card,.place-card{
+  position:relative!important;
+  overflow:hidden!important;
+  background:#0b0e0b!important;
+}
+.menu-card::before,.menu-card::after,
+.place-card::before,.place-card::after{
+  content:none!important;
+  display:none!important;
+}
+.card-photo{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;       /* full image, no crop/zoom */
+  object-position:center;
+  background:#0b0e0b;
+  display:block;
+  z-index:0;
+  transform:none!important;
+  filter:none!important;
+}
+.card-shade{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.02) 0%,rgba(0,0,0,.06) 50%,rgba(0,0,0,.62) 100%);
+}
+.menu-card-content,.menu-card-arrow,.place-card strong,.mini-icon{
+  position:relative;
+  z-index:2;
+}
+
+
+/* ===== REFERENCE-MATCH SHOWCASE ===== */
+.showcase-ref{
+  padding:16px 16px 26px!important;
+  background:
+    radial-gradient(circle at 48% 0%,rgba(89,138,25,.10),transparent 34%),
+    linear-gradient(180deg,#071007 0%,#050805 100%)!important;
+}
+.showcase-ref .showcase-head{padding:0 3px 14px!important}
+.showcase-ref .showcase-kicker{
+  color:var(--lime);font-size:11px;font-weight:900;letter-spacing:.28em;margin-bottom:7px
+}
+.showcase-ref .showcase-title{
+  margin:0!important;font-size:31px!important;line-height:.98!important;font-weight:950!important;
+  letter-spacing:-1.1px!important;white-space:nowrap
+}
+.showcase-ref .showcase-title span{color:var(--lime)}
+.showcase-ref .showcase-sub{
+  margin:9px 0 0!important;color:#c8ccc6!important;font-size:13px!important;line-height:1.4!important
+}
+.menu-cards-ref,.place-grid-ref{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+.ref-top{
+  min-height:145px!important;border-radius:22px!important;border:1.2px solid rgba(168,230,31,.7)!important;
+  padding:0!important;display:block!important
+}
+.ref-place{
+  min-height:110px!important;border-radius:19px!important;border:1px solid rgba(168,230,31,.5)!important;
+  padding:0!important;display:block!important
+}
+.ref-top .card-photo,.ref-place .card-photo{
+  position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+  object-fit:cover!important;object-position:center!important;background:#0a0d0a!important
+}
+.ref-top .card-shade{
+  background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.03) 48%,rgba(0,0,0,.58) 100%)!important
+}
+.ref-place .card-shade{
+  background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.04) 48%,rgba(0,0,0,.62) 100%)!important
+}
+.ref-top .menu-card-content{
+  position:absolute!important;left:14px!important;bottom:13px!important;z-index:3!important;width:auto!important
+}
+.ref-top .menu-card-icon{
+  width:38px!important;height:38px!important;border-radius:11px!important;margin-bottom:7px!important
+}
+.ref-top strong{font-size:21px!important;line-height:1!important}
+.ref-top .menu-card-arrow{
+  position:absolute!important;right:12px!important;bottom:12px!important;z-index:3!important;
+  width:36px!important;height:36px!important;border-width:1.7px!important;font-size:20px!important
+}
+.place-title{
+  margin:24px 3px 10px!important;color:var(--lime)!important;font-size:11px!important;font-weight:900!important;letter-spacing:.28em!important
+}
+.ref-place .mini-icon{
+  position:absolute!important;left:12px!important;bottom:12px!important;top:auto!important;
+  width:36px!important;height:36px!important;border-radius:10px!important;z-index:3!important
+}
+.ref-place strong{
+  position:absolute!important;left:58px!important;bottom:13px!important;right:8px!important;
+  z-index:3!important;font-size:15px!important;line-height:1.04!important;font-weight:850!important;
+  text-align:left!important
+}
+/* lower cards are visual only: no arrows */
+.ref-place .menu-card-arrow{display:none!important}
+@media(max-width:380px){
+  .showcase-ref .showcase-title{font-size:28px!important}
+  .ref-top{min-height:135px!important}
+  .ref-place{min-height:104px!important}
+  .ref-place strong{font-size:14px!important}
+}
+
+
+/* ===== LEFT APP MENU ===== */
+.app-menu-btn{
+  position:absolute;
+  top:14px;
+  left:14px;
+  z-index:31;
+  width:44px;
+  height:44px;
+  border:1px solid rgba(168,230,31,.55);
+  border-radius:14px;
+  background:rgba(10,13,10,.92);
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+.app-menu-btn span,
+.app-menu-btn::before,
+.app-menu-btn::after{
+  content:"";
+  display:block;
+  width:20px;
+  height:2px;
+  border-radius:2px;
+  background:var(--lime);
+  position:absolute;
+}
+.app-menu-btn::before{transform:translateY(-7px)}
+.app-menu-btn::after{transform:translateY(7px)}
+
+.sidebar-overlay{
+  position:fixed;
+  inset:0;
+  z-index:80;
+  background:rgba(0,0,0,.56);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .24s ease;
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+}
+.sidebar-overlay.open{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.sidebar{
+  position:fixed;
+  top:0;
+  left:0;
+  bottom:0;
+  z-index:81;
+  width:min(84vw,360px);
+  padding:
+    calc(22px + env(safe-area-inset-top))
+    18px
+    calc(24px + env(safe-area-inset-bottom));
+  background:
+    radial-gradient(circle at 0 0,rgba(168,230,31,.10),transparent 260px),
+    rgba(8,11,8,.985);
+  border-right:1px solid rgba(168,230,31,.18);
+  box-shadow:18px 0 50px rgba(0,0,0,.45);
+  transform:translateX(-102%);
+  transition:transform .28s cubic-bezier(.2,.8,.2,1);
+  display:flex;
+  flex-direction:column;
+}
+.sidebar.open{transform:translateX(0)}
+
+.sidebar-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:26px;
+}
+.sidebar-brand{
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:.03em;
+}
+.sidebar-brand span{color:var(--lime)}
+.sidebar-close{
+  width:40px;
+  height:40px;
+  border-radius:12px;
+  border:1px solid #2d332d;
+  background:#111511;
+  color:var(--text);
+  font-size:27px;
+  line-height:1;
+  cursor:pointer;
+}
+.sidebar-label{
+  color:#7f877f;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.24em;
+  margin:0 8px 10px;
+}
+.sidebar-nav{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.sidebar-link{
+  min-height:58px;
+  border:1px solid #252b25;
+  border-radius:16px;
+  background:#0f130f;
+  color:var(--text);
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:0 15px;
+  font-size:17px;
+  font-weight:700;
+  -webkit-tap-highlight-color:transparent;
+}
+.sidebar-link:active{
+  border-color:rgba(168,230,31,.65);
+  background:#141914;
+}
+.sidebar-link.active{
+  color:var(--lime);
+  border-color:rgba(168,230,31,.55);
+}
+.sidebar-icon{
+  width:36px;
+  height:36px;
+  border:1px solid #303730;
+  border-radius:11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  font-size:18px;
+}
+.sidebar-link.active .sidebar-icon{
+  border-color:rgba(168,230,31,.7);
+}
+.sidebar-spacer{flex:1}
+.sidebar-domain{
+  color:#777f77;
+  font-size:12px;
+  padding:16px 8px 0;
+}
+body.sidebar-open{
+  overflow:hidden;
+}
+
+
+.info-page{
+  margin:22px 16px;
+  padding:22px 18px;
+  border:1px solid #252b25;
+  border-radius:20px;
+  background:#0d100d;
+}
+.info-page h2{
+  margin:0 0 10px;
+  font-size:26px;
+}
+.info-page p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.5;
+  font-size:14px;
+}
+
+
+
+
+
+/* ===== SIDEBAR CLOSE ALIGNMENT FIX ===== */
+.sidebar-close{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:0 !important;
+  line-height:1 !important;
+  box-sizing:border-box !important;
+  font-family:Arial,sans-serif !important;
+  font-size:28px !important;
+}
+
+
+/* ===== BONUS PAGE ===== */
+.bonus-page{
+  position:fixed;
+  inset:0;
+  z-index:90;
+  display:flex;
+  flex-direction:column;
+  background:
+    radial-gradient(circle at 50% 15%,rgba(168,230,31,.09),transparent 320px),
+    #050605;
+  padding:
+    calc(18px + env(safe-area-inset-top))
+    18px
+    calc(18px + env(safe-area-inset-bottom));
+  transform:translateX(102%);
+  opacity:0;
+  pointer-events:none;
+  transition:
+    transform .28s cubic-bezier(.2,.8,.2,1),
+    opacity .20s ease;
+}
+.bonus-page.open{
+  transform:translateX(0);
+  opacity:1;
+  pointer-events:auto;
+}
+.bonus-page-top{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.bonus-back{
+  width:42px;
+  height:42px;
+  border:1px solid #2d332d;
+  border-radius:13px;
+  background:#101410;
+  color:var(--lime);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+  line-height:1;
+  cursor:pointer;
+}
+.bonus-page-title{
+  font-size:20px;
+  font-weight:850;
+}
+.bonus-coming{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:var(--text);
+  font-size:28px;
+  font-weight:900;
+  letter-spacing:.01em;
+}
+.bonus-coming span{
+  color:var(--lime);
+}
+
+
+.sidebar-link{
+  width:100%;
+  border:1px solid #252b25;
+  font:inherit;
+  text-align:left;
+  cursor:pointer;
+}
+.bonus-back{
+  cursor:pointer;
+}
+
+
+/* ===== LOCATION PAGE ===== */
+.location-page{
+  position:fixed;
+  inset:0;
+  z-index:90;
+  display:flex;
+  flex-direction:column;
+  background:
+    radial-gradient(circle at 50% 15%,rgba(168,230,31,.09),transparent 320px),
+    #050605;
+  padding:
+    calc(18px + env(safe-area-inset-top))
+    18px
+    calc(18px + env(safe-area-inset-bottom));
+  transform:translateX(102%);
+  opacity:0;
+  pointer-events:none;
+  transition:
+    transform .28s cubic-bezier(.2,.8,.2,1),
+    opacity .20s ease;
+}
+.location-page.open{
+  transform:translateX(0);
+  opacity:1;
+  pointer-events:auto;
+}
+.location-page-top{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.location-back{
+  width:42px;
+  height:42px;
+  border:1px solid #2d332d;
+  border-radius:13px;
+  background:#101410;
+  color:var(--lime);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+  line-height:1;
+  cursor:pointer;
+}
+.location-page-title{
+  font-size:20px;
+  font-weight:850;
+}
+.location-content{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:24px;
+}
+.location-content-inner{
+  max-width:420px;
+}
+.location-content h2{
+  margin:0 0 10px;
+  font-size:28px;
+  font-weight:900;
+}
+.location-content p{
+  margin:0;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.5;
+}
+
+
+.location-scroll{
+  flex:1;
+  overflow:auto;
+  -webkit-overflow-scrolling:touch;
+  padding:18px 0 6px;
+}
+.location-card{
+  max-width:560px;
+  margin:0 auto;
+  background:#0d100d;
+  border:1px solid #242a24;
+  border-radius:22px;
+  padding:18px;
+  box-shadow:0 14px 40px rgba(0,0,0,.28);
+}
+.location-kicker{
+  color:var(--lime);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.16em;
+  margin-bottom:8px;
+}
+.location-card h2{
+  margin:0 0 10px;
+  font-size:28px;
+  line-height:1.1;
+}
+.location-address{
+  margin:0;
+  font-size:17px;
+  line-height:1.45;
+  color:var(--text);
+}
+.location-coords{
+  margin:7px 0 16px;
+  color:var(--muted);
+  font-size:13px;
+}
+.map-wrap{
+  overflow:hidden;
+  border-radius:18px;
+  border:1px solid #2a302a;
+  background:#111;
+}
+.location-map{
+  width:100%;
+  height:340px;
+  display:block;
+  border:0;
+}
+.route-button{
+  margin-top:14px;
+  min-height:54px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:0 18px;
+  border-radius:16px;
+  background:var(--lime);
+  color:#071000;
+  text-decoration:none;
+  font-weight:900;
+  font-size:17px;
+}
+.route-button span{
+  font-size:24px;
+  line-height:1;
+}
+
+
+/* ===== NEON APP REDESIGN v1 ===== */
+:root{
+  --neon:#b8ff28;
+  --neon-soft:rgba(184,255,40,.16);
+  --neon-line:rgba(184,255,40,.34);
+  --panel:rgba(12,16,12,.88);
+  --panel-2:rgba(16,22,16,.94);
+  --shadow-neon:0 0 0 1px rgba(184,255,40,.08),0 14px 38px rgba(0,0,0,.34),0 0 24px rgba(184,255,40,.05);
+}
+
+/* Slightly more "app" feeling */
+html{
+  background:#030503;
+  scroll-behavior:smooth;
+}
+body{
+  background:
+    radial-gradient(circle at 50% -120px, rgba(184,255,40,.10), transparent 360px),
+    linear-gradient(180deg,#050705 0%,#070907 40%,#040604 100%);
+}
+.app{
+  max-width:760px;
+  margin:0 auto;
+  position:relative;
+}
+
+/* Hero */
+.hero{
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid rgba(184,255,40,.10);
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  width:240px;
+  height:240px;
+  border-radius:50%;
+  right:-105px;
+  top:-95px;
+  background:radial-gradient(circle,rgba(184,255,40,.18),rgba(184,255,40,0) 68%);
+  pointer-events:none;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  left:22px;
+  right:22px;
+  bottom:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--neon-line),transparent);
+  box-shadow:0 0 12px rgba(184,255,40,.22);
+}
+.hero h1,
+.brand,
+.hero-title{
+  text-shadow:0 0 22px rgba(184,255,40,.08);
+}
+
+/* App menu button */
+.app-menu-btn{
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  background:rgba(9,13,9,.80)!important;
+  border:1px solid rgba(184,255,40,.28)!important;
+  box-shadow:0 0 18px rgba(184,255,40,.08),0 8px 26px rgba(0,0,0,.28);
+}
+.app-menu-btn:active{
+  transform:scale(.94);
+}
+
+/* Horizontal nav becomes a floating app dock */
+.category-nav,
+.nav{
+  background:rgba(5,8,5,.78)!important;
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-top:1px solid rgba(255,255,255,.025);
+  border-bottom:1px solid rgba(184,255,40,.10);
+  box-shadow:0 10px 30px rgba(0,0,0,.24);
+}
+.category-nav a,
+.nav a{
+  border-radius:999px!important;
+  transition:all .22s ease;
+}
+.category-nav a.active,
+.nav a.active{
+  color:#071000!important;
+  background:linear-gradient(180deg,#c7ff4a,#a9ed20)!important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.12),0 0 20px rgba(184,255,40,.20);
+  transform:translateY(-1px);
+}
+
+/* Top photo cards */
+.quick-grid a,
+.quick-card,
+.hero-card{
+  border-radius:22px!important;
+  overflow:hidden;
+  border:1px solid rgba(184,255,40,.12)!important;
+  box-shadow:var(--shadow-neon)!important;
+  transform:translateZ(0);
+  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
+}
+.quick-grid a:active,
+.quick-card:active,
+.hero-card:active{
+  transform:scale(.985);
+  border-color:rgba(184,255,40,.30)!important;
+}
+.quick-grid a::after,
+.quick-card::after{
+  box-shadow:inset 0 -80px 70px -36px rgba(0,0,0,.75);
+}
+
+/* Atmosphere/photo cards */
+.features-grid > *,
+.feature-card,
+.atmosphere-card{
+  border-radius:20px!important;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.055)!important;
+  background:var(--panel)!important;
+  box-shadow:0 12px 34px rgba(0,0,0,.22);
+}
+
+/* Menu sections look like stacked app cards */
+.menu-section,
+.section{
+  position:relative;
+}
+.menu-section h2,
+.section h2{
+  letter-spacing:-.02em;
+}
+.menu-list,
+.items,
+.menu-card{
+  background:linear-gradient(180deg,rgba(15,20,15,.92),rgba(8,12,8,.94))!important;
+  border:1px solid rgba(184,255,40,.08)!important;
+  border-radius:22px!important;
+  overflow:hidden;
+  box-shadow:var(--shadow-neon)!important;
+}
+.menu-item{
+  transition:background .16s ease;
+}
+.menu-item:active{
+  background:rgba(184,255,40,.035);
+}
+.menu-item + .menu-item{
+  border-top-color:rgba(255,255,255,.045)!important;
+}
+
+/* Green labels feel more like neon chips */
+.group-title,
+.subgroup-title,
+.menu-group-title{
+  color:var(--neon)!important;
+  text-shadow:0 0 12px rgba(184,255,40,.12);
+}
+
+/* Sidebar app drawer */
+.sidebar{
+  background:
+    radial-gradient(circle at 20% 0%,rgba(184,255,40,.11),transparent 260px),
+    rgba(5,8,5,.96)!important;
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+  border-right:1px solid rgba(184,255,40,.16)!important;
+  box-shadow:22px 0 50px rgba(0,0,0,.42);
+}
+.sidebar-link{
+  min-height:54px;
+  border-radius:16px!important;
+  background:rgba(255,255,255,.018)!important;
+  transition:all .18s ease;
+}
+.sidebar-link.active{
+  color:#0a1104!important;
+  background:linear-gradient(180deg,#c7ff4a,#a9ed20)!important;
+  border-color:rgba(184,255,40,.45)!important;
+  box-shadow:0 0 22px rgba(184,255,40,.16);
+}
+.sidebar-link:active{
+  transform:scale(.985);
+}
+.sidebar-close{
+  border-color:rgba(184,255,40,.18)!important;
+  background:rgba(15,20,15,.76)!important;
+}
+
+/* Fullscreen pages */
+.bonus-page,
+.location-page{
+  background:
+    radial-gradient(circle at 50% -40px,rgba(184,255,40,.12),transparent 320px),
+    linear-gradient(180deg,#050805,#030503)!important;
+}
+.bonus-page-top,
+.location-page-top{
+  position:sticky;
+  top:0;
+  z-index:2;
+  padding-bottom:12px;
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+.bonus-back,
+.location-back{
+  background:rgba(12,17,12,.82)!important;
+  border-color:rgba(184,255,40,.22)!important;
+  box-shadow:0 0 18px rgba(184,255,40,.06);
+}
+.bonus-coming{
+  font-size:30px!important;
+  text-shadow:0 0 24px rgba(184,255,40,.08);
+}
+.location-card{
+  border-color:rgba(184,255,40,.12)!important;
+  background:linear-gradient(180deg,rgba(16,22,16,.96),rgba(8,12,8,.96))!important;
+  box-shadow:var(--shadow-neon)!important;
+}
+.map-wrap{
+  border-color:rgba(184,255,40,.14)!important;
+}
+.route-button{
+  background:linear-gradient(180deg,#c8ff4d,#a9ed20)!important;
+  box-shadow:0 0 22px rgba(184,255,40,.15),0 10px 26px rgba(0,0,0,.22);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.route-button:active{
+  transform:scale(.985);
+}
+
+/* Better app motion */
+.sidebar,
+.bonus-page,
+.location-page,
+.sidebar-overlay{
+  will-change:transform,opacity;
+}
+@media (prefers-reduced-motion:no-preference){
+  .menu-list,
+  .items,
+  .menu-card,
+  .quick-grid a,
+  .features-grid > *{
+    animation:cardIn .35s ease both;
+  }
+  @keyframes cardIn{
+    from{opacity:0;transform:translateY(8px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+}
+
+/* iPhone safe-area polish */
+@supports (padding:max(0px)){
+  .sidebar,
+  .bonus-page,
+  .location-page{
+    padding-bottom:max(18px,env(safe-area-inset-bottom));
+  }
+}
+
+
+/* ===== TYPOGRAPHY + CENTERED MENU EXPERIMENT ===== */
+
+/* A more distinctive, compact app-like type system */
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",
+              "Helvetica Neue",Arial,sans-serif!important;
+  letter-spacing:-.012em;
+}
+.hero h1,
+.brand,
+.hero-title,
+.section-title,
+.menu-section h2,
+.section h2,
+.location-card h2,
+.bonus-coming{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Arial Black",Arial,sans-serif!important;
+  font-weight:900!important;
+  letter-spacing:-.045em!important;
+}
+.menu-item,
+.category-nav a,
+.nav a,
+.sidebar-link{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif!important;
+}
+
+/* Center the food/drink rows */
+.menu-item{
+  position:relative;
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  justify-items:center!important;
+  text-align:center!important;
+  gap:5px!important;
+  padding:19px 54px!important;
+  min-height:88px;
+}
+.menu-item > *{
+  text-align:center!important;
+  justify-self:center!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+.menu-item .name,
+.menu-item .item-name,
+.menu-item > div:first-child{
+  width:100%;
+  font-size:17px!important;
+  font-weight:650!important;
+  line-height:1.22!important;
+  letter-spacing:-.025em!important;
+}
+.menu-item .meta,
+.menu-item .item-meta,
+.menu-item .weight,
+.menu-item .volume{
+  color:#8f978f!important;
+  font-size:13px!important;
+  line-height:1.2!important;
+}
+.menu-item .price,
+.menu-item .item-price,
+.menu-item strong{
+  color:#f7f8f5!important;
+  font-size:18px!important;
+  font-weight:850!important;
+  line-height:1.1!important;
+  letter-spacing:-.02em!important;
+}
+
+/* If the original row uses a right-hand wrapper, center that too */
+.menu-item > div:last-child{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:4px!important;
+  width:auto!important;
+  min-width:0!important;
+}
+
+/* Section headings */
+.menu-section h2,
+.section h2{
+  text-align:center!important;
+  font-size:30px!important;
+  margin-bottom:15px!important;
+}
+.group-title,
+.subgroup-title,
+.menu-group-title{
+  text-align:center!important;
+  letter-spacing:.10em!important;
+  font-size:12px!important;
+  font-weight:850!important;
+}
+
+/* Center category pills while keeping horizontal scroll */
+.category-nav a,
+.nav a{
+  text-align:center!important;
+  font-weight:650!important;
+  letter-spacing:-.015em!important;
+}
+
+/* More obvious visual separation than previous version */
+.menu-list,
+.items,
+.menu-card{
+  border-radius:26px!important;
+}
+.menu-item + .menu-item{
+  border-top:1px solid rgba(184,255,40,.085)!important;
+}
+
+/* Slight glow only on price when touching a row */
+.menu-item:active .price,
+.menu-item:active .item-price,
+.menu-item:active strong{
+  color:var(--neon)!important;
+  text-shadow:0 0 14px rgba(184,255,40,.28);
+}
+
+
+/* ===== TRUE CENTERED MENU LAYOUT v2 ===== */
+
+/* Real selectors used by the current menu markup */
+.item{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  text-align:center!important;
+  gap:7px!important;
+  min-height:112px!important;
+  padding:20px 26px!important;
+}
+
+.item > div:first-child{
+  width:100%!important;
+  display:flex!important;
+  justify-content:center!important;
+  align-items:center!important;
+  text-align:center!important;
+}
+
+.item .name{
+  width:100%!important;
+  max-width:540px!important;
+  margin:0 auto!important;
+  text-align:center!important;
+  font-size:18px!important;
+  line-height:1.25!important;
+  font-weight:650!important;
+  letter-spacing:-.025em!important;
+}
+
+.item .price{
+  width:100%!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  text-align:center!important;
+  white-space:normal!important;
+  font-size:19px!important;
+  font-weight:900!important;
+  line-height:1.05!important;
+  letter-spacing:-.02em!important;
+}
+
+.item .price small{
+  display:block!important;
+  margin:0 0 5px!important;
+  text-align:center!important;
+  font-size:13px!important;
+  line-height:1.1!important;
+  color:#909790!important;
+  font-weight:500!important;
+}
+
+/* Make section titles feel intentional with the centered rows */
+section > h2{
+  text-align:center!important;
+  justify-content:center!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:14px!important;
+  font-size:31px!important;
+  line-height:1!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+
+/* Replace the long right-side decorative line with symmetric accents */
+section > h2::before,
+section > h2::after{
+  content:"";
+  flex:1 1 0;
+  max-width:72px;
+  height:3px;
+  border-radius:999px;
+  background:linear-gradient(90deg,transparent,var(--lime));
+  opacity:.9;
+}
+section > h2::after{
+  background:linear-gradient(90deg,var(--lime),transparent);
+}
+
+/* Avoid inherited old heading pseudo-element conflicts */
+section > h2 span::before,
+section > h2 span::after{
+  display:none!important;
+}
+
+/* Center subgroup headings too */
+.subgroup,
+.group-title,
+.subgroup-title{
+  text-align:center!important;
+  justify-content:center!important;
+}
+
+/* Slightly softer row borders in the centered layout */
+.item{
+  border-bottom:1px solid rgba(184,255,40,.075)!important;
+}
+.item:last-child{
+  border-bottom:none!important;
+}
+
+@media (max-width:420px){
+  .item{
+    min-height:106px!important;
+    padding:18px 20px!important;
+  }
+  .item .name{
+    font-size:17px!important;
+  }
+  section > h2{
+    font-size:28px!important;
+  }
+}
+
+
+/* ===== SUBCATEGORY REDESIGN ===== */
+.drink-group{
+  width:max-content!important;
+  max-width:calc(100% - 40px)!important;
+  margin:26px auto 12px!important;
+  padding:9px 16px 9px 13px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:9px!important;
+
+  color:#f4f5f2!important;
+  background:linear-gradient(180deg,rgba(18,23,18,.96),rgba(10,14,10,.96))!important;
+  border:1px solid rgba(255,255,255,.09)!important;
+  border-radius:999px!important;
+  box-shadow:
+    0 8px 24px rgba(0,0,0,.24),
+    inset 0 1px 0 rgba(255,255,255,.025)!important;
+
+  font-size:13px!important;
+  line-height:1!important;
+  font-weight:800!important;
+  text-transform:uppercase!important;
+  letter-spacing:.085em!important;
+  text-align:center!important;
+}
+.drink-group::before{
+  content:""!important;
+  width:7px!important;
+  height:7px!important;
+  flex:0 0 7px!important;
+  border-radius:50%!important;
+  background:var(--lime)!important;
+  box-shadow:0 0 12px rgba(184,255,40,.42)!important;
+}
+.drink-group:first-of-type{
+  margin-top:8px!important;
+}
+
+/* A little more breathing room between subcategory blocks */
+#strong .menu-list,
+#lemonade .menu-list{
+  margin-bottom:10px!important;
+}
+
+
+/* ===== SPORTBAR 41 CINEMATIC REDESIGN v2 ===== */
+:root{--accent:#20f17a;--accent-soft:rgba(32,241,122,.16);--ink:#050807;--panel:#0a0f0d}
+body{background:#040706!important;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif!important}
+.app{max-width:980px!important;background:#050807!important;box-shadow:0 0 80px rgba(0,0,0,.45)}
+header.hero{min-height:74px!important;padding:20px 76px!important;display:flex;align-items:center;justify-content:center;background:#050807!important;border-bottom:1px solid rgba(255,255,255,.06)!important}
+header.hero .logo-main{font-size:24px!important;line-height:1!important;letter-spacing:-1px!important;display:flex;gap:6px;align-items:center} header.hero .logo-main span{font-size:24px!important;display:inline!important;color:var(--accent)!important}
+header.hero .tagline{display:none!important}.app-menu-btn,.language-btn{border-color:rgba(32,241,122,.32)!important}.app-menu-btn span,.app-menu-btn:before,.app-menu-btn:after{background:var(--accent)!important}.language-btn{color:var(--accent)!important}
+.landing-v2{padding:0!important;scroll-margin-top:0!important;background:#050807}
+.landing-hero{position:relative;min-height:570px;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.06)}
+.landing-hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.12) brightness(.72)}
+.landing-hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,5,4,.98) 0%,rgba(2,5,4,.82) 39%,rgba(2,5,4,.25) 70%,rgba(2,5,4,.18) 100%),linear-gradient(0deg,rgba(2,5,4,.72),transparent 45%)}
+.landing-hero-content{position:relative;z-index:2;min-height:570px;padding:66px 46px 38px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;max-width:610px}
+.landing-kicker{color:var(--accent);font-size:12px;font-weight:900;letter-spacing:.34em;margin-bottom:12px}.landing-brand{font-family:Impact,"Arial Black",sans-serif;font-size:70px;line-height:.9;letter-spacing:-2px;font-style:italic}.landing-brand span{color:var(--accent)}
+.landing-slogan{margin-top:22px;font-family:Impact,"Arial Black",sans-serif;font-size:38px;line-height:1.03;letter-spacing:.015em;color:#e9ece8}
+.landing-actions{display:flex;gap:12px;margin-top:28px}.landing-actions a,.landing-actions button{min-height:52px;border-radius:10px;padding:0 20px;display:flex;align-items:center;gap:18px;font-size:13px;font-weight:900;text-decoration:none;letter-spacing:.02em}.landing-primary{background:var(--accent);color:#031009;border:1px solid var(--accent)}.landing-secondary{background:rgba(4,8,6,.58);color:#fff;border:1px solid rgba(255,255,255,.58);cursor:pointer}.landing-meta{display:flex;gap:28px;margin-top:32px;color:#c8ceca;font-size:12px}.landing-meta span:first-child{color:#eef1ee}
+.experience-head{padding:34px 26px 18px;display:flex;align-items:end;justify-content:space-between;gap:20px}.experience-head small{color:var(--accent);font-weight:900;letter-spacing:.22em}.experience-head h2{display:block!important;margin:7px 0 0!important;font-size:28px!important;text-align:left!important;letter-spacing:-.04em!important}.experience-head h2:before,.experience-head h2:after{display:none!important}.experience-head p{color:#8f9892;font-size:13px;margin:0 0 2px}
+.experience-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;padding:0 24px 34px}.experience-card{position:relative;min-height:235px;border-radius:16px;overflow:hidden;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.07);background:#0b100e}.experience-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.88) contrast(1.05)}.experience-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.03) 20%,rgba(0,0,0,.9) 100%)}.experience-copy{position:absolute;left:14px;right:14px;bottom:14px;z-index:2}.experience-icon{display:flex;width:34px;height:34px;border:1px solid rgba(255,255,255,.7);border-radius:9px;align-items:center;justify-content:center;margin-bottom:10px}.experience-copy strong{display:block;font-size:17px;font-weight:950}.experience-copy p{font-size:11px;line-height:1.35;color:#cbd0cc;margin:6px 22px 0 0}.experience-arrow{position:absolute;right:12px;bottom:13px;z-index:3;color:var(--accent);font-size:21px}
+.nav{border-top:1px solid rgba(255,255,255,.06)!important;background:rgba(5,8,7,.94)!important}.nav a.active{background:var(--accent)!important;border-color:var(--accent)!important;color:#031009!important;box-shadow:none!important}.drink-group:before{background:var(--accent)!important}.route-button{background:var(--accent)!important}
+@media(max-width:760px){.landing-hero{min-height:560px}.landing-hero-content{min-height:560px;padding:52px 22px 30px}.landing-brand{font-size:56px}.landing-slogan{font-size:33px}.landing-meta{flex-direction:column;gap:8px}.experience-head{padding:28px 16px 16px;display:block}.experience-head p{margin-top:8px}.experience-grid{grid-template-columns:repeat(2,1fr);padding:0 14px 28px}.experience-card{min-height:210px}.experience-card:last-child{grid-column:1/-1;min-height:190px}.landing-actions{width:100%}.landing-actions a,.landing-actions button{padding:0 14px;gap:10px;justify-content:center}.landing-primary{flex:.8}.landing-secondary{flex:1.2}}
+@media(max-width:390px){.landing-brand{font-size:49px}.landing-slogan{font-size:30px}.landing-actions{flex-direction:column}.landing-actions a,.landing-actions button{width:100%}.experience-card{min-height:195px}}
+</style>
+<style>
+.menu-intro{padding:34px 18px 22px!important;text-align:center;background:radial-gradient(circle at 50% 0,rgba(32,241,122,.09),transparent 260px),#050807}.menu-intro a{display:inline-block;color:#cbd1cd;text-decoration:none;font-size:13px;margin-bottom:22px}.menu-intro small{display:block;color:#20f17a;font-weight:900;letter-spacing:.25em}.menu-intro h1{font-family:Impact,"Arial Black",sans-serif;font-size:58px;line-height:.95;margin:8px 0 10px;letter-spacing:-1px}.menu-intro p{margin:0;color:#929a94}.language-wrap{display:none!important}header.hero{min-height:64px!important}.nav{top:0!important}
+</style></head>
+<body>
+<section aria-hidden="true" class="bonus-page" id="bonusPage">
+<div class="bonus-page-top">
+<button aria-label="Назад" class="bonus-back" id="bonusBack">‹</button>
+<div class="bonus-page-title">Бонусная система</div>
+</div>
+<div class="bonus-coming">Скоро <span> появится</span></div>
+</section>
+<section aria-hidden="true" class="location-page" id="locationPage">
+<div class="location-page-top">
+<button aria-label="Назад" class="location-back" id="locationBack">‹</button>
+<div class="location-page-title">Как добраться</div>
+</div>
+<div class="location-scroll">
+<div class="location-card">
+<div class="location-kicker">СПОРТБАР</div>
+<h2>Мы находимся здесь</h2>
+<p class="location-address">Петропавловск-Камчатский, проспект Победы, 67/2</p>
+<div class="map-wrap">
+<iframe class="location-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=158.583874%2C53.067557%2C158.593874%2C53.073557&amp;layer=mapnik&amp;marker=53.070557%2C158.588874" title="Карта Спортбара">
+</iframe>
+</div>
+<a class="route-button" href="https://2gis.ru/p_kamchatskiy/geo/70000001101674671" rel="noopener noreferrer" target="_blank">
+        Построить маршрут в 2ГИС
+        <span>→</span>
+</a>
+</div>
+</div>
+</section>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<aside aria-hidden="true" class="sidebar" id="sidebar">
+<div class="sidebar-top">
+<div class="sidebar-brand">СПОРТ<span>БАР</span></div>
+<button aria-label="Закрыть" class="sidebar-close" id="sidebarClose">×</button>
+</div>
+<div class="sidebar-label">РАЗДЕЛЫ</div>
+<nav class="sidebar-nav">
+<a class="sidebar-link active" data-page="menu" href="index.html">
+<span class="sidebar-icon">☰</span>
+<span>Главная</span>
+</a>
+<button class="sidebar-link" data-page="bonus" id="openBonusPage" type="button">
+<span class="sidebar-icon">★</span>
+<span>Бонусная система</span>
+</button>
+<button class="sidebar-link" data-page="location" id="openLocationPage" type="button"><span class="sidebar-icon">⌖</span>
+<span>Как добраться</span></button>
+</nav>
+<div class="sidebar-spacer"></div>
+<div class="sidebar-domain">sportbar41.ru</div>
+</aside>
+<div class="app">
+<header class="hero">
+<button aria-label="Открыть меню" class="app-menu-btn" id="appMenuBtn"><span></span></button>
+
+<div class="logo-main">СПОРТ<span>БАР 41</span></div>
+<div class="tagline">★ ТВОЙ БАР. ТВОИ ПРАВИЛА. ТВОЯ ПОБЕДА! ★</div>
+</header><section class="menu-intro"><a href="index.html">← На главную</a><small>SPORTBAR 41</small><h1>МЕНЮ</h1><p>Кухня и бар — всё в одном месте.</p></section>
+
+<nav class="nav" id="nav">
+<a class="active" data-to="zakuski" href="#zakuski">Закуски</a>
+<a data-to="hot" href="#hot">Горячее</a>
+<a data-to="fryer" href="#fryer">Фритюр</a>
+<a data-to="salads" href="#salads">Салаты</a>
+<a data-to="soups" href="#soups">Супы</a>
+<a data-to="desserts" href="#desserts">Десерты</a>
+<a data-to="cocktails" href="#cocktails">Коктейли</a>
+<a data-to="strong" href="#strong">Крепкое</a>
+<a data-to="lemonade" href="#lemonade">Напитки</a>
+<a data-to="beer" href="#beer">Пиво</a>
+<a data-to="hookah" href="#hookah">Кальян</a>
+</nav>
+<section id="zakuski">
+<h2>Закуски</h2>
+<div class="menu-list">
+<div class="item"><div><div class="name">Сельдь по домашнему</div></div><div class="price"><small>415 г</small>650 ₽</div></div>
+<div class="item"><div><div class="name">Ассорти свежих овощей</div></div><div class="price"><small>485 г</small>900 ₽</div></div>
+<div class="item"><div><div class="name">Ассорти домашних солений</div></div><div class="price"><small>390 г</small>750 ₽</div></div>
+<div class="item"><div><div class="name">Ассорти мясное</div></div><div class="price"><small>260 г</small>950 ₽</div></div>
+<div class="item"><div><div class="name">Ассорти сырное</div></div><div class="price"><small>260 г</small>950 ₽</div></div>
+<div class="item"><div><div class="name">Рыбная нарезка</div></div><div class="price"><small>350 г</small>1500 ₽</div></div>
+<div class="item"><div><div class="name">Креветки магаданские</div></div><div class="price"><small>620 г</small>2600 ₽</div></div>
+<div class="item"><div><div class="name">Мидии в ракушках</div></div><div class="price"><small>350 г</small>850 ₽</div></div>
+</div>
+</section>
+<section id="hot">
+<h2>Горячее</h2>
+<div class="menu-list">
+<div class="item"><div class="name">Стейк из свинины</div><div class="price"><small>580 г</small>950 ₽</div></div>
+<div class="item"><div class="name">Стейк из куриного бедра</div><div class="price"><small>580 г</small>740 ₽</div></div>
+<div class="item"><div class="name">Крылья BBQ</div><div class="price"><small>680 г</small>990 ₽</div></div>
+<div class="item"><div class="name">Ассорти колбасок на гриле</div><div class="price"><small>940 г</small>2500 ₽</div></div>
+<div class="item"><div class="name">Жареный картофель с грибами</div><div class="price"><small>320 г</small>650 ₽</div></div>
+<div class="item"><div class="name">Овощи гриль</div><div class="price"><small>370 г</small>700 ₽</div></div>
+<div class="item"><div class="name">Лапша соба с курицей</div><div class="price"><small>470 г</small>780 ₽</div></div>
+<div class="item"><div class="name">Бургер с картофелем фри</div><div class="price"><small>470 г</small>650 ₽</div></div>
+<div class="item"><div class="name">Хот дог</div><div class="price"><small>350 г</small>550 ₽</div></div>
+<div class="item"><div class="name">Сендвич</div><div class="price"><small>350 г</small>650 ₽</div></div>
+<div class="item"><div class="name">Стейк Рибай</div><div class="price"><small>470 г</small>3000 ₽</div></div>
+<div class="item"><div class="name">Говядина терияки с картофелем</div><div class="price"><small>380 г</small>790 ₽</div></div>
+</div>
+</section>
+<section id="fryer">
+<h2>Фритюр</h2>
+<div class="menu-list">
+<div class="item"><div class="name">Пивная тарелка</div><div class="price"><small>860 г</small>1600 ₽</div></div>
+<div class="item"><div class="name">Картофель фри</div><div class="price"><small>150 г</small>250 ₽</div></div>
+<div class="item"><div class="name">Картофель дольками</div><div class="price"><small>150 г</small>270 ₽</div></div>
+<div class="item"><div class="name">Гренки</div><div class="price"><small>150 г</small>250 ₽</div></div>
+<div class="item"><div class="name">Луковые кольца</div><div class="price"><small>150 г</small>250 ₽</div></div>
+<div class="item"><div class="name">Дамплинги с морепродуктами</div><div class="price"><small>150 г</small>600 ₽</div></div>
+<div class="item"><div class="name">Сырные палочки</div><div class="price"><small>150 г</small>400 ₽</div></div>
+<div class="item"><div class="name">Наггетсы</div><div class="price"><small>200 г</small>420 ₽</div></div>
+</div>
+</section>
+<section id="salads">
+<h2>Салаты</h2>
+<div class="menu-list">
+<div class="item"><div class="name">Греческий</div><div class="price"><small>215 г</small>620 ₽</div></div>
+<div class="item"><div class="name">Салат с говядиной</div><div class="price"><small>230 г</small>750 ₽</div></div>
+<div class="item"><div class="name">Салат с морепродуктами</div><div class="price"><small>260 г</small>850 ₽</div></div>
+<div class="item"><div class="name">Чили салат с колбасками</div><div class="price"><small>260 г</small>780 ₽</div></div>
+<div class="item"><div class="name">Салат с лососем</div><div class="price"><small>370 г</small>690 ₽</div></div>
+<div class="item"><div class="name">Цезарь с курицей</div><div class="price"><small>250 г</small>700 ₽</div></div>
+<div class="item"><div class="name">Цезарь с креветкой</div><div class="price"><small>250 г</small>870 ₽</div></div>
+<div class="item"><div class="name">Табули</div><div class="price"><small>250 г</small>680 ₽</div></div>
+</div>
+</section>
+<section id="soups">
+<h2>Супы</h2>
+<div class="menu-list">
+<div class="item"><div class="name">Том Ям</div><div class="price"><small>655 г</small>950 ₽</div></div>
+<div class="item"><div class="name">Борщ</div><div class="price"><small>480 г</small>650 ₽</div></div>
+</div>
+</section>
+<section id="desserts">
+<h2>Десерты</h2>
+<div class="menu-list">
+<div class="item"><div class="name">Сырники со сгущенкой</div><div class="price"><small>210 г</small>350 ₽</div></div>
+<div class="item"><div class="name">Блинчики со сметаной</div><div class="price"><small>130 г</small>300 ₽</div></div>
+</div>
+</section>
+<section id="cocktails">
+<h2>Коктейли</h2>
+<div class="menu-list">
+<div class="item"><div class="name">Апероль шприц</div><div class="price"><small>300 мл</small>650 ₽</div></div>
+<div class="item"><div class="name">Негрони</div><div class="price"><small>100 мл</small>700 ₽</div></div>
+<div class="item"><div class="name">Голубая лагуна</div><div class="price"><small>200 мл</small>550 ₽</div></div>
+<div class="item"><div class="name">Джин и грех</div><div class="price"><small>100 мл</small>550 ₽</div></div>
+<div class="item"><div class="name">Джон Коллинз</div><div class="price"><small>200 мл</small>550 ₽</div></div>
+<div class="item"><div class="name">Куба Либре</div><div class="price"><small>200 мл</small>550 ₽</div></div>
+<div class="item"><div class="name">Мохито</div><div class="price"><small>250 мл</small>500 ₽</div></div>
+<div class="item"><div class="name">Маргарита</div><div class="price"><small>100 мл</small>550 ₽</div></div>
+<div class="item"><div class="name">Мартини</div><div class="price"><small>90 мл</small>550 ₽</div></div>
+<div class="item"><div class="name">Лонг Айленд</div><div class="price"><small>200 мл</small>850 ₽</div></div>
+<div class="item"><div class="name">Пина Колада</div><div class="price"><small>200 мл</small>600 ₽</div></div>
+<div class="item"><div class="name">Текила Бум</div><div class="price"><small>50 мл</small>450 ₽</div></div>
+<div class="item"><div class="name">Текила Санрайз</div><div class="price"><small>200 мл</small>550 ₽</div></div>
+<div class="item"><div class="name">Виски - кола</div><div class="price"><small>200 мл</small>550 ₽</div></div>
+<div class="item"><div class="name">Джин - спрайт</div><div class="price"><small>200 мл</small>550 ₽</div></div>
+<div class="item"><div class="name">Егерь - сок</div><div class="price"><small>200 мл</small>600 ₽</div></div>
+<div class="item"><div class="name">Флирт</div><div class="price"><small>200 мл</small>550 ₽</div></div>
+<div class="item"><div class="name">Мятный боллит</div><div class="price"><small>200 мл</small>550 ₽</div></div>
+<div class="item"><div class="name">Нежный поцелуй в шею</div><div class="price"><small>200 мл</small>550 ₽</div></div>
+<div class="item"><div class="name">Дюшес для взрослых</div><div class="price"><small>200 мл</small>550 ₽</div></div>
+</div>
+</section>
+<section id="strong">
+<h2>Крепкое</h2>
+<h3 class="drink-group">Водка</h3>
+<div class="menu-list">
+<div class="item"><div class="name">Белуга</div><div class="price"><small>50 мл</small>450 ₽</div></div>
+<div class="item"><div class="name">Онегин</div><div class="price"><small>50 мл</small>400 ₽</div></div>
+<div class="item"><div class="name">Грей Гус</div><div class="price"><small>50 мл</small>700 ₽</div></div>
+<div class="item"><div class="name">Царская</div><div class="price"><small>50 мл</small>250 ₽</div></div>
+<div class="item"><div class="name">Чистые росы</div><div class="price"><small>50 мл</small>550 ₽</div></div>
+<div class="item"><div class="name">Алтай</div><div class="price"><small>50 мл</small>250 ₽</div></div>
+</div>
+<h3 class="drink-group">Настойки</h3>
+<div class="menu-list">
+<div class="item"><div class="name">Брусничная</div><div class="price"><small>50 мл</small>200 ₽</div></div>
+<div class="item"><div class="name">Малиновая</div><div class="price"><small>50 мл</small>200 ₽</div></div>
+<div class="item"><div class="name">Облепиховая</div><div class="price"><small>50 мл</small>200 ₽</div></div>
+<div class="item"><div class="name">Сливочная</div><div class="price"><small>50 мл</small>200 ₽</div></div>
+<div class="item"><div class="name">Смородиновая</div><div class="price"><small>50 мл</small>200 ₽</div></div>
+<div class="item"><div class="name">Витамин С</div><div class="price"><small>50 мл</small>200 ₽</div></div>
+<div class="item"><div class="name">Мятная</div><div class="price"><small>50 мл</small>200 ₽</div></div>
+<div class="item"><div class="name">Дюшес</div><div class="price"><small>50 мл</small>200 ₽</div></div>
+<div class="item"><div class="name">Жгучий апельсин</div><div class="price"><small>50 мл</small>200 ₽</div></div>
+</div>
+<h3 class="drink-group">Джин</h3>
+<div class="menu-list">
+<div class="item"><div class="name">Барристер</div><div class="price"><small>50 мл</small>250 ₽</div></div>
+</div>
+<h3 class="drink-group">Ликер</h3>
+<div class="menu-list">
+<div class="item"><div class="name">Егермейстер</div><div class="price"><small>50 мл</small>450 ₽</div></div>
+</div>
+<h3 class="drink-group">Текила</h3>
+<div class="menu-list">
+<div class="item"><div class="name">Лос Корралес</div><div class="price"><small>50 мл</small>350 ₽</div></div>
+</div>
+<h3 class="drink-group">Ром</h3>
+<div class="menu-list">
+<div class="item"><div class="name">Рон Каладос</div><div class="price"><small>50 мл</small>300 ₽</div></div>
+</div>
+<h3 class="drink-group">Виски</h3>
+<div class="menu-list">
+<div class="item"><div class="name">Джек Дэниэлс</div><div class="price"><small>50 мл</small>700 ₽</div></div>
+<div class="item"><div class="name">Джек Дэниэлс Хани</div><div class="price"><small>50 мл</small>740 ₽</div></div>
+<div class="item"><div class="name">Наки Томпсон</div><div class="price"><small>50 мл</small>300 ₽</div></div>
+<div class="item"><div class="name">Чивас</div><div class="price"><small>50 мл</small>950 ₽</div></div>
+<div class="item"><div class="name">Джемесон</div><div class="price"><small>50 мл</small>680 ₽</div></div>
+<div class="item"><div class="name">Джим Бим</div><div class="price"><small>50 мл</small>550 ₽</div></div>
+</div>
+<h3 class="drink-group">Коньяк</h3>
+<div class="menu-list">
+<div class="item"><div class="name">Арарат</div><div class="price"><small>50 мл</small>450 ₽</div></div>
+<div class="item"><div class="name">Асканели</div><div class="price"><small>50 мл</small>350 ₽</div></div>
+<div class="item"><div class="name">Старый Кенигсберг</div><div class="price"><small>50 мл</small>250 ₽</div></div>
+</div>
+<h3 class="drink-group">Вино</h3>
+<div class="menu-list">
+<div class="item"><div class="name">Алазанская долина</div><div class="price"><small>150 мл</small>500 ₽</div></div>
+<div class="item"><div class="name">Киндзмараули</div><div class="price"><small>150 мл</small>500 ₽</div></div>
+<div class="item"><div class="name">Абрау-Дюрсо / п/сл / брют</div><div class="price"><small>150 мл</small>400 ₽</div></div>
+<div class="item"><div class="name">Мартини Просекко</div><div class="price"><small>750 мл</small>1200 ₽</div></div>
+</div>
+</section>
+<section id="lemonade">
+<h2>Напитки</h2>
+<h3 class="drink-group">Холодные</h3>
+<div class="menu-list">
+<div class="item"><div class="name">Лимонад - клюква</div><div class="price"><small>300 мл / 1000 мл</small>300 / 800 ₽</div></div>
+<div class="item"><div class="name">Лимонад - облепиха</div><div class="price"><small>300 мл / 1000 мл</small>300 / 800 ₽</div></div>
+<div class="item"><div class="name">Лимонад - малина-имбирь</div><div class="price"><small>300 мл / 1000 мл</small>300 / 800 ₽</div></div>
+<div class="item"><div class="name">Лимонад - манго-лимон</div><div class="price"><small>300 мл / 1000 мл</small>300 / 800 ₽</div></div>
+<div class="item"><div class="name">Лимонад - смородина</div><div class="price"><small>300 мл / 1000 мл</small>300 / 800 ₽</div></div>
+<div class="item"><div class="name">Морс</div><div class="price"><small>200 мл / 1000 мл</small>150 / 550 ₽</div></div>
+</div>
+<h3 class="drink-group">Чай</h3>
+<div class="menu-list">
+<div class="item"><div class="name">Чай классический</div><div class="price"><small>900 мл</small>500 ₽</div></div>
+<div class="item"><div class="name">Чай авторский</div><div class="price"><small>900 мл</small>650 ₽</div></div>
+</div>
+<h3 class="drink-group">Кофе</h3>
+<div class="menu-list">
+<div class="item"><div class="name">Американо</div><div class="price"><small>150 мл</small>220 ₽</div></div>
+<div class="item"><div class="name">Капучино</div><div class="price"><small>200 мл</small>300 ₽</div></div>
+<div class="item"><div class="name">Латте</div><div class="price"><small>300 мл</small>300 ₽</div></div>
+<div class="item"><div class="name">Эспрессо</div><div class="price"><small>45 мл</small>200 ₽</div></div>
+<div class="item"><div class="name">Армянский кофе</div><div class="price"><small>45 мл</small>200 ₽</div></div>
+</div>
+</section>
+<section id="beer">
+<h2>Пиво</h2>
+<div class="menu-list">
+<div class="item"><div class="name">Пиво на розлив</div><div class="price">от 350 ₽</div></div>
+<div class="item"><div class="name">Пиво в бутылках</div><div class="price">от 300 ₽</div></div>
+</div>
+</section>
+<section id="hookah">
+<h2>Кальян</h2>
+<div class="menu-list">
+<div class="item"><div><div class="name">Кальян</div></div><div class="price">1800 ₽</div></div>
+</div>
+</section>
+<footer class="footer">
+<strong>СМОТРИ. БОЛЕЙ. ПОБЕЖДАЙ!</strong><br/><br/>
+    Спорт Бар
+  </footer>
+</div>
+<script>
+const nav = document.getElementById('nav');
+const links = [...document.querySelectorAll('.nav a[data-to]')];
+const sections = links
+  .map(link => document.getElementById(link.dataset.to))
+  .filter(Boolean);
+
+let currentActiveId = '';
+
+function centerActiveTab(link, smooth = true) {
+  if (!nav || !link) return;
+
+  const targetLeft =
+    link.offsetLeft -
+    (nav.clientWidth - link.offsetWidth) / 2;
+
+  nav.scrollTo({
+    left: Math.max(0, targetLeft),
+    behavior: smooth ? 'smooth' : 'auto'
+  });
+}
+
+function setActive(id, center = true) {
+  if (!id) return;
+
+  let activeLink = null;
+
+  links.forEach(link => {
+    const isActive = link.dataset.to === id;
+    link.classList.toggle('active', isActive);
+    if (isActive) activeLink = link;
+  });
+
+  // Only animate the nav when the active section actually changes.
+  const changed = currentActiveId !== id;
+  currentActiveId = id;
+
+  if (activeLink && center && changed) {
+    centerActiveTab(activeLink, true);
+  }
+}
+
+links.forEach(link => {
+  link.addEventListener('click', () => {
+    // Browser anchor navigation still scrolls the PAGE to the section.
+    // We move only the horizontal category bar.
+    setActive(link.dataset.to, true);
+  });
+});
+
+function updateActiveFromScroll() {
+  const marker = (nav ? nav.offsetHeight : 0) + 34;
+  let current = sections[0];
+
+  for (const section of sections) {
+    const top = section.getBoundingClientRect().top;
+    if (top <= marker) {
+      current = section;
+    } else {
+      break;
+    }
+  }
+
+  if (current) {
+    setActive(current.id, true);
+  }
+}
+
+let scheduled = false;
+window.addEventListener('scroll', () => {
+  if (scheduled) return;
+  scheduled = true;
+
+  requestAnimationFrame(() => {
+    updateActiveFromScroll();
+    scheduled = false;
+  });
+}, { passive: true });
+
+window.addEventListener('load', () => {
+  updateActiveFromScroll();
+
+  if (location.hash) {
+    const id = location.hash.slice(1);
+    const target = document.getElementById(id);
+    if (target) setActive(id, true);
+  }
+});
+
+/* ===== APP NAVIGATION ===== */
+const appMenuBtn = document.getElementById('appMenuBtn');
+const sidebar = document.getElementById('sidebar');
+const sidebarOverlay = document.getElementById('sidebarOverlay');
+const sidebarClose = document.getElementById('sidebarClose');
+
+const openMenuPage = document.getElementById('openMenuPage');
+const openBonusPage = document.getElementById('openBonusPage');
+const openLocationPage = document.getElementById('openLocationPage');
+
+const bonusPage = document.getElementById('bonusPage');
+const bonusBack = document.getElementById('bonusBack');
+const locationPage = document.getElementById('locationPage');
+const locationBack = document.getElementById('locationBack');
+
+function openSidebar() {
+  sidebar?.classList.add('open');
+  sidebarOverlay?.classList.add('open');
+  sidebar?.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('sidebar-open');
+}
+
+function closeSidebar() {
+  sidebar?.classList.remove('open');
+  sidebarOverlay?.classList.remove('open');
+  sidebar?.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('sidebar-open');
+}
+
+function setSidebarActive(page) {
+  document.querySelectorAll('.sidebar-link').forEach(item => {
+    item.classList.toggle('active', item.dataset.page === page);
+  });
+}
+
+function showBonusPage() {
+  closeSidebar();
+  hideLocationPage(false);
+  bonusPage?.classList.add('open');
+  bonusPage?.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('sidebar-open');
+  setSidebarActive('bonus');
+}
+
+function hideBonusPage(resetActive = true) {
+  bonusPage?.classList.remove('open');
+  bonusPage?.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('sidebar-open');
+  if (resetActive) setSidebarActive('menu');
+}
+
+function showLocationPage() {
+  closeSidebar();
+  hideBonusPage(false);
+  locationPage?.classList.add('open');
+  locationPage?.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('sidebar-open');
+  setSidebarActive('location');
+}
+
+function hideLocationPage(resetActive = true) {
+  locationPage?.classList.remove('open');
+  locationPage?.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('sidebar-open');
+  if (resetActive) setSidebarActive('menu');
+}
+
+appMenuBtn?.addEventListener('click', openSidebar);
+sidebarClose?.addEventListener('click', closeSidebar);
+sidebarOverlay?.addEventListener('click', closeSidebar);
+
+openMenuPage?.addEventListener('click', () => {
+  closeSidebar();
+  hideBonusPage(false);
+  hideLocationPage(false);
+  setSidebarActive('menu');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+openBonusPage?.addEventListener('click', showBonusPage);
+bonusBack?.addEventListener('click', hideBonusPage);
+
+openLocationPage?.addEventListener('click', showLocationPage);
+locationBack?.addEventListener('click', hideLocationPage);
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    if (bonusPage?.classList.contains('open')) {
+      hideBonusPage();
+    } else if (locationPage?.classList.contains('open')) {
+      hideLocationPage();
+    } else {
+      closeSidebar();
+    }
+  }
+});
+
+</script>
+<script>document.getElementById('landingRoute')?.addEventListener('click',()=>{document.getElementById('locationPage')?.classList.add('open');document.getElementById('locationPage')?.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';});</script></body>
+</html>
