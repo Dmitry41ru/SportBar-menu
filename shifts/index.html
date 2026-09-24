@@ -8,7 +8,23 @@
 <div id="employees" class="tab hide"><section class="card"><h2>Сотрудники</h2><form id="employeeForm"><div class="grid"><label>Имя<input id="name" required maxlength="120"></label><label>Должность<input id="position" required maxlength="120"></label></div><label>Ставка за смену, ₽<input id="rate" type="number" min="0" step="0.01" required></label><button class="primary">Добавить сотрудника</button></form></section><section class="card scroll"><table><thead><tr><th>Имя</th><th>Должность</th><th>Ставка</th><th>Статус</th><th></th></tr></thead><tbody id="employeesBody"></tbody></table></section></div>
 <div id="salary" class="tab hide"><section class="card"><h2>Начисления</h2><p id="period"></p><div id="payroll" class="scroll"></div><div class="notice">Закрытие периода и подтверждение выплаты пока отключены. Для этого добавим отдельную серверную операцию, которая сохранит расчёт целиком и не допустит повторной выплаты.</div></section></div>
 <div id="history" class="tab hide"><section class="card"><h2>История выплат</h2><div id="historyContent"></div></section></div></section></main>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+// Независимый обработчик: форма открывается даже при сбое внешней библиотеки.
+document.getElementById('forgot').addEventListener('click', function () {
+  const panel = document.getElementById('recoverRequest');
+  panel.classList.toggle('hide');
+  document.getElementById('recoveryEmail').value = document.getElementById('email').value.trim();
+  if (!panel.classList.contains('hide')) document.getElementById('recoveryEmail').focus();
+});
+window.addEventListener('error', function (event) {
+  const msg = document.getElementById('loginMsg');
+  if (msg && !document.getElementById('login').classList.contains('hide')) {
+    msg.textContent = 'Ошибка загрузки страницы: ' + (event.message || 'проверьте подключение к интернету и обновите страницу');
+    msg.className = 'error';
+  }
+});
+</script>
+<script onerror="document.getElementById('loginMsg').textContent='Не загрузилась библиотека Supabase. Проверьте интернет или блокировщик контента.'" src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
 'use strict';
 const URL='https://cdrtdkqokrxaoznwlinh.supabase.co';
@@ -25,8 +41,8 @@ async function authenticate(){if(recoveryMode){showPasswordForm();return}const {
 function showLogin(msg=''){$('setPassword').classList.add('hide');$('login').classList.remove('hide');$('app').classList.add('hide');$('logout').classList.add('hide');$('loginMsg').textContent=msg;$('identity').textContent=''}
 $('loginForm').onsubmit=async e=>{e.preventDefault();$('loginMsg').textContent='Проверяем данные…';const {error}=await db.auth.signInWithPassword({email:$('email').value.trim(),password:$('password').value});$('password').value='';if(error){$('loginMsg').textContent='Не удалось войти: '+error.message;return}await authenticate()};
 function showPasswordForm(){$('login').classList.add('hide');$('app').classList.add('hide');$('setPassword').classList.remove('hide');$('logout').classList.add('hide')}
-$('forgot').onclick=()=>{$('recoverRequest').classList.toggle('hide');$('recoveryEmail').value=$('email').value.trim()};
-$('sendRecovery').onclick=async()=>{const email=$('recoveryEmail').value.trim();if(!email||!$('recoveryEmail').checkValidity()){$('requestMsg').textContent='Укажи корректный email.';return}const btn=$('sendRecovery');btn.disabled=true;$('requestMsg').textContent='Отправляем письмо…';const {error}=await db.auth.resetPasswordForEmail(email,{redirectTo:'https://sportbar41.ru/shifts/'});$('requestMsg').textContent=error?'Не удалось отправить письмо: '+error.message:'Если адрес зарегистрирован, письмо со ссылкой будет отправлено. Проверь почту.';btn.disabled=false};
+
+$('sendRecovery').onclick=async()=>{if(!window.supabase){$('requestMsg').textContent='Не загрузилась библиотека Supabase. Попробуй отключить блокировщик контента и обновить страницу.';return}const email=$('recoveryEmail').value.trim();if(!email||!$('recoveryEmail').checkValidity()){$('requestMsg').textContent='Укажи корректный email.';return}const btn=$('sendRecovery');btn.disabled=true;$('requestMsg').textContent='Отправляем письмо…';const {error}=await db.auth.resetPasswordForEmail(email,{redirectTo:'https://sportbar41.ru/shifts/'});$('requestMsg').textContent=error?'Не удалось отправить письмо: '+error.message:'Если адрес зарегистрирован, письмо со ссылкой будет отправлено. Проверь почту.';btn.disabled=false};
 $('setPasswordForm').onsubmit=async e=>{e.preventDefault();const p=$('newPassword').value;if(p.length<12||p!==$('repeatPassword').value){$('passwordMsg').textContent='Пароль должен содержать не менее 12 символов; оба поля должны совпадать.';return}const btn=$('setPasswordForm').querySelector('button');btn.disabled=true;const {error}=await db.auth.updateUser({password:p});$('newPassword').value='';$('repeatPassword').value='';btn.disabled=false;if(error){$('passwordMsg').textContent='Не удалось сохранить пароль: '+error.message;return}recoveryMode=false;history.replaceState(null,'',location.pathname);$('passwordMsg').textContent='Пароль установлен.';await db.auth.signOut();showLogin('Пароль установлен. Теперь войди с новым паролем.')};
 db.auth.onAuthStateChange((event)=>{if(event==='PASSWORD_RECOVERY'){recoveryMode=true;showPasswordForm()}});
 $('logout').onclick=async()=>{await db.auth.signOut();activeUser=null;showLogin()};
