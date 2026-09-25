@@ -42,14 +42,14 @@ function initApp(){
 const URL='https://cdrtdkqokrxaoznwlinh.supabase.co';
 const KEY='sb_publishable_nchjLHSt5HkSyk6-tUd0Xg_w0odx0SD';
 const db=window.supabase.createClient(URL,KEY);
-let employees=[],shifts=[],shiftTypes=[],adjustments=[],activeUser=null,tab='today',recoveryMode=new URLSearchParams(location.hash.slice(1)).get('type')==='recovery'||new URLSearchParams(location.search).get('type')==='recovery';
+let employees=[],shifts=[],shiftTypes=[],adjustments=[],activeUser=null,tab='today',recoveryMode=false;
 const $=id=>document.getElementById(id),money=n=>new Intl.NumberFormat('ru-RU',{style:'currency',currency:'RUB',maximumFractionDigits:2}).format(n||0);
 const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const localDate=d=>[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
 $('day').value=localDate(new Date());
 function notice(msg,bad=false){$('status').textContent=msg||'';$('status').className=bad?'error':'ok'}
 function periodFor(s){let d=new Date(s+'T12:00:00'),y=d.getFullYear(),m=d.getMonth(),n=d.getDate(),a,b,p;if(n>=10&&n<=24){a=new Date(y,m,10);b=new Date(y,m,24);p=new Date(y,m,25)}else if(n>=25){a=new Date(y,m,25);b=new Date(y,m+1,9);p=new Date(y,m+1,10)}else{a=new Date(y,m-1,25);b=new Date(y,m,9);p=new Date(y,m,10)}return{start:localDate(a),end:localDate(b),pay:localDate(p)}}
-async function authenticate(){if(recoveryMode){showPasswordForm();return}const {data:{user},error}=await db.auth.getUser();if(error||!user){showLogin();return}const {data:access,error:ae}=await db.from('staff_access').select('access_role').eq('user_id',user.id).maybeSingle();if(ae||access?.access_role!=='admin'){await db.auth.signOut();showLogin('Для этого аккаунта доступ администратора не назначен.');return}activeUser=user;$('identity').textContent=user.email;$('login').classList.add('hide');$('app').classList.remove('hide');$('accountMenu').classList.remove('hide');await refresh()}
+async function authenticate(){const {data:{user},error}=await db.auth.getUser();if(error||!user){showLogin();return}const {data:access,error:ae}=await db.from('staff_access').select('access_role').eq('user_id',user.id).maybeSingle();if(ae||access?.access_role!=='admin'){await db.auth.signOut();showLogin('Для этого аккаунта доступ администратора не назначен.');return}activeUser=user;$('identity').textContent=user.email;$('login').classList.add('hide');$('app').classList.remove('hide');$('accountMenu').classList.remove('hide');await refresh()}
 function showLogin(msg=''){$('setPassword').classList.add('hide');$('login').classList.remove('hide');$('app').classList.add('hide');$('accountMenu').classList.add('hide');$('loginMsg').textContent=msg;$('identity').textContent=''}
 let loginUnlockTimer=null;
 function formatWait(seconds){seconds=Math.max(0,Math.ceil(seconds));const m=Math.floor(seconds/60),s=seconds%60;return m?`${m} мин ${String(s).padStart(2,'0')} сек`:`${s} сек`}
@@ -77,8 +77,31 @@ $('loginForm').onsubmit=async e=>{
 function showPasswordForm(){$('login').classList.add('hide');$('app').classList.add('hide');$('setPassword').classList.remove('hide');$('accountMenu').classList.add('hide')}
 
 $('sendRecovery').onclick=async()=>{const btn=$('sendRecovery');btn.disabled=true;$('requestMsg').textContent='Отправляем письмо…';try{const {error}=await db.auth.resetPasswordForEmail('sportbar41@gmail.com',{redirectTo:'https://sportbar41.ru/shifts/'});$('requestMsg').textContent=error?'Не удалось отправить письмо: '+error.message:'Если директорский аккаунт доступен, письмо со ссылкой будет отправлено.'}catch(err){$('requestMsg').textContent='Ошибка подключения: '+err.message}finally{btn.disabled=false}};
-$('setPasswordForm').onsubmit=async e=>{e.preventDefault();const p=$('newPassword').value;if(p.length<6||p!==$('repeatPassword').value){$('passwordMsg').textContent='Пароль должен содержать не менее 6 символов; оба поля должны совпадать.';return}const btn=$('setPasswordForm').querySelector('button');btn.disabled=true;const {error}=await db.auth.updateUser({password:p});$('newPassword').value='';$('repeatPassword').value='';btn.disabled=false;if(error){$('passwordMsg').textContent='Не удалось сохранить пароль: '+error.message;return}recoveryMode=false;history.replaceState(null,'',location.pathname);$('passwordMsg').textContent='Пароль установлен.';await db.auth.signOut();showLogin('Пароль установлен. Теперь войди с новым паролем.')};
-db.auth.onAuthStateChange((event)=>{if(event==='PASSWORD_RECOVERY'){recoveryMode=true;showPasswordForm()}});
+$('setPasswordForm').onsubmit=async e=>{
+ e.preventDefault();
+ const p=$('newPassword').value,r=$('repeatPassword').value,msg=$('passwordMsg'),btn=$('setPasswordForm').querySelector('button');
+ msg.textContent='';
+ if(p.length<6){msg.textContent='Пароль должен содержать не менее 6 символов.';return}
+ if(p!==r){msg.textContent='Пароли не совпадают.';return}
+ btn.disabled=true;msg.textContent='Сохраняем новый пароль…';
+ try{
+  const {data:{session},error:sessionError}=await db.auth.getSession();
+  if(sessionError||!session){
+   msg.textContent='Ссылка восстановления уже недействительна или сессия не успела открыться. Запроси новое письмо и открой последнюю ссылку.';
+   return;
+  }
+  const {error}=await db.auth.updateUser({password:p});
+  if(error){msg.textContent=`Не удалось сохранить пароль: ${error.message} (${error.code||'auth_error'})`;return}
+  $('setPasswordForm').reset();
+  recoveryMode=false;
+  history.replaceState(null,'',location.pathname);
+  msg.textContent='Пароль сохранён. Открываем админку…';
+  await authenticate();
+ }catch(err){
+  msg.textContent='Не удалось сохранить пароль: '+(err?.message||String(err));
+ }finally{btn.disabled=false}
+};
+db.auth.onAuthStateChange((event,session)=>{if(event==='PASSWORD_RECOVERY'&&session){recoveryMode=true;showPasswordForm();$('passwordMsg').textContent='Ссылка подтверждена. Теперь задай новый пароль.'}});
 $('logout').onclick=async()=>{await db.auth.signOut();activeUser=null;showLogin()};
  function closeSecurity(){$('securityModal').classList.add('hide');document.body.classList.remove('modal-open');$('changePasswordForm').reset();$('securityMsg').textContent=''}
  $('openSecurity').onclick=()=>{$('accountMenu').removeAttribute('open');$('securityIdentity').textContent=activeUser?.email||'';$('securityMsg').textContent='';$('securityModal').classList.remove('hide');document.body.classList.add('modal-open');$('changePassword').focus()};
@@ -136,7 +159,14 @@ function renderSalary(){
 }
 async function renderHistory(){let {data,error}=await db.from('staff_pay_periods').select('id,period_start,period_end,scheduled_pay_date,status,staff_payouts(amount)').eq('status','closed').order('period_end',{ascending:false});if(error){$('historyContent').textContent=error.message;return}$('historyContent').innerHTML=(data||[]).map(p=>`<p>${p.period_start} — ${p.period_end}: ${money((p.staff_payouts||[]).reduce((a,x)=>a+Number(x.amount),0))}</p>`).join('')||'<p class="muted">Закрытых выплат пока нет.</p>'}
 document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x.dataset.tab===tab));document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('hide',x.id!==tab));if(tab==='history')renderHistory()});
-if(recoveryMode){showPasswordForm()}else{authenticate()}
+(async()=>{
+ const hashType=new URLSearchParams(location.hash.slice(1)).get('type');
+ const searchType=new URLSearchParams(location.search).get('type');
+ const cameFromRecovery=hashType==='recovery'||searchType==='recovery';
+ const {data:{session}}=await db.auth.getSession();
+ if(cameFromRecovery&&session){recoveryMode=true;showPasswordForm();$('passwordMsg').textContent='Ссылка подтверждена. Теперь задай новый пароль.'}
+ else await authenticate();
+})()
 
 }
 </script>
