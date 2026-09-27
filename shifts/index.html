@@ -49,7 +49,29 @@ const localDate=d=>[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),Strin
 $('day').value=localDate(new Date());
 function notice(msg,bad=false){$('status').textContent=msg||'';$('status').className=bad?'error':'ok'}
 function periodFor(s){let d=new Date(s+'T12:00:00'),y=d.getFullYear(),m=d.getMonth(),n=d.getDate(),a,b,p;if(n>=10&&n<=24){a=new Date(y,m,10);b=new Date(y,m,24);p=new Date(y,m,25)}else if(n>=25){a=new Date(y,m,25);b=new Date(y,m+1,9);p=new Date(y,m+1,10)}else{a=new Date(y,m-1,25);b=new Date(y,m,9);p=new Date(y,m,10)}return{start:localDate(a),end:localDate(b),pay:localDate(p)}}
-async function authenticate(){const {data:{user},error}=await db.auth.getUser();if(error||!user){showLogin();return}const {data:access,error:ae}=await db.from('staff_access').select('access_role').eq('user_id',user.id).maybeSingle();if(ae||access?.access_role!=='admin'){await db.auth.signOut();showLogin('Для этого аккаунта доступ администратора не назначен.');return}activeUser=user;$('identity').textContent=user.email;$('login').classList.add('hide');$('app').classList.remove('hide');$('accountMenu').classList.remove('hide');await refresh()}
+async function authenticate(){
+ const {data:{session},error:sessionError}=await db.auth.getSession();
+ if(sessionError||!session?.user){showLogin();return}
+ const user=session.user;
+ const {data:access,error:ae}=await db.from('staff_access').select('access_role').eq('user_id',user.id).maybeSingle();
+ if(ae){
+  console.error('staff_access check failed',ae);
+  showLogin('Не удалось проверить права доступа. Обнови страницу и попробуй ещё раз.');
+  return;
+ }
+ if(access?.access_role!=='admin'){
+  await db.auth.signOut();
+  showLogin('Для этого аккаунта доступ администратора не назначен.');
+  return;
+ }
+ activeUser=user;
+ $('identity').textContent=user.email||'Директор';
+ $('login').classList.add('hide');
+ $('setPassword').classList.add('hide');
+ $('app').classList.remove('hide');
+ $('accountMenu').classList.remove('hide');
+ await refresh();
+}
 function showLogin(msg=''){$('setPassword').classList.add('hide');$('login').classList.remove('hide');$('app').classList.add('hide');$('accountMenu').classList.add('hide');$('loginMsg').textContent=msg;$('identity').textContent=''}
 let loginUnlockTimer=null;
 function formatWait(seconds){seconds=Math.max(0,Math.ceil(seconds));const m=Math.floor(seconds/60),s=seconds%60;return m?`${m} мин ${String(s).padStart(2,'0')} сек`:`${s} сек`}
